@@ -1,0 +1,21 @@
+﻿@using BForms.Html
+@using Hesira.Resources
+
+
+@model Hesira.Areas.Common.Models.UsersPageModel
+
+@{
+    ViewBag.Title = "Hesira | " + Resource.Users;
+    Layout = "~/Areas/Common/Views/Shared/_Layout.cshtml"; 
+}
+
+
+@using (Html.BsGridWrapper())
+{
+    @Html.Partial("Toolbar/_Toolbar", Model)
+
+    @Html.Partial("Grid/_Grid", Model)
+}
+
+
+

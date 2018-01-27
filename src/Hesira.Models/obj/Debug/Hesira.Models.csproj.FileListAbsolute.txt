@@ -1,0 +1,7 @@
+D:\Workspace\TFS\Hesira\Hesira.Models\bin\Debug\Hesira.Models.dll
+D:\Workspace\TFS\Hesira\Hesira.Models\bin\Debug\Hesira.Models.pdb
+D:\Workspace\TFS\Hesira\Hesira.Models\bin\Debug\Hesira.Common.dll
+D:\Workspace\TFS\Hesira\Hesira.Models\bin\Debug\Hesira.Common.pdb
+D:\Workspace\TFS\Hesira\Hesira.Models\obj\Debug\Hesira.Models.csprojResolveAssemblyReference.cache
+D:\Workspace\TFS\Hesira\Hesira.Models\obj\Debug\Hesira.Models.dll
+D:\Workspace\TFS\Hesira\Hesira.Models\obj\Debug\Hesira.Models.pdb

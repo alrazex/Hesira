@@ -1,0 +1,35 @@
+﻿@using BForms.Html
+@using Hesira.Areas.Doctor.Models
+@using Hesira.Resources
+@model Hesira.Areas.Doctor.Models.PrescriptionBuilderModel
+
+@using (Html.BsGridWrapper())
+{
+
+    @(Html.BsGroupEditorFor(x => x)
+    .ConfigureTabs(cfg =>
+    {
+        cfg.Title = Resource.Prescription;
+
+        var drugsTab = cfg.For(x => x.DrugsTab).
+            Template(x => x.Grid, "TeamBuilder/_TabItem")
+            .DisplayName(Resource.Drugs)
+            .ConnectsWith(PrescriptionType.Final);
+
+        drugsTab.For(x => x.Grid);
+        drugsTab.QuickSearch = true;
+        drugsTab.BulkMove = false;
+
+    })
+    .ConfigureGroups(cfg =>
+    {
+        cfg.For(x => x.PrescriptionBuiler)
+            .DisplayText(Resource.Choose)
+            .DisplayName(Resource.Drugs)
+            .Template(x => x.Items, "TeamBuilder/_GroupItem")
+            .Template(x => x.Form, "TeamBuilder/_FormItem");
+
+        cfg.Title = Resource.Drugs;
+    }).HtmlAttributes(new Dictionary<string, object>() { { "id", "js-prescriptionEditor" } }))
+
+}

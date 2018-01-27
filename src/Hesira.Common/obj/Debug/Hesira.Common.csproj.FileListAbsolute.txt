@@ -1,0 +1,5 @@
+D:\Workspace\TFS\Hesira\Hesira.Common\bin\Debug\Hesira.Common.dll
+D:\Workspace\TFS\Hesira\Hesira.Common\bin\Debug\Hesira.Common.pdb
+D:\Workspace\TFS\Hesira\Hesira.Common\obj\Debug\Hesira.Common.csprojResolveAssemblyReference.cache
+D:\Workspace\TFS\Hesira\Hesira.Common\obj\Debug\Hesira.Common.dll
+D:\Workspace\TFS\Hesira\Hesira.Common\obj\Debug\Hesira.Common.pdb

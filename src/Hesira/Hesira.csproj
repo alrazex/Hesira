@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4BC1311C-9D12-46DE-8A0F-53DD4B120869}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hesira</RootNamespace>
+    <AssemblyName>Hesira</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BForms">
+      <HintPath>..\packages\BForms.MVC.1.0.0.35\lib\net45\BForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.2.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RequireJsNet, Version=1.0.22.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RequireJsNet.1.0.22.0\lib\net45\RequireJsNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.1\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.1\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Common\Controllers\AppointmentsController.cs" />
+    <Compile Include="Areas\Common\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Common\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Common\Extensions\UserExtensions.cs" />
+    <Compile Include="Areas\Common\Models\AppointmentModels.cs" />
+    <Compile Include="Areas\Common\Models\DiseaseModels.cs" />
+    <Compile Include="Areas\Common\Models\DrugModels.cs" />
+    <Compile Include="Areas\Common\Models\PrescriptionModels.cs" />
+    <Compile Include="Areas\Common\Models\UserModels.cs" />
+    <Compile Include="Areas\Common\Models\UserProfileModels.cs" />
+    <Compile Include="Areas\Common\Repositories\AppointmentsRepository.cs" />
+    <Compile Include="Areas\Common\Repositories\UserProfileRepository.cs" />
+    <Compile Include="Areas\Common\Repositories\UsersRepository.cs" />
+    <Compile Include="Areas\Doctor\Controllers\AppointmentsController.cs" />
+    <Compile Include="Areas\Doctor\Controllers\PrescriptionsController.cs" />
+    <Compile Include="Areas\Doctor\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Doctor\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Doctor\Models\PrescriptionBuilderModels.cs" />
+    <Compile Include="Areas\Doctor\Models\PrescriptionModels.cs" />
+    <Compile Include="Areas\Doctor\Repositories\PrescriptionGroupEditorRepository.cs" />
+    <Compile Include="Areas\Doctor\Repositories\PrescriptionsRepository.cs" />
+    <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
+    <Compile Include="Areas\Patient\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Patient\Controllers\TraceController.cs" />
+    <Compile Include="Areas\Patient\Models\TraceModels.cs" />
+    <Compile Include="Areas\Patient\Repositories\TraceRepository.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
+    <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\General\Attributes.cs" />
+    <Compile Include="Helpers\General\AuthMembershipProvider.cs" />
+    <Compile Include="Helpers\General\ReflectionHelpers.cs" />
+    <Compile Include="Helpers\General\UrlHelpers.cs" />
+    <Compile Include="Helpers\General\UserData.cs" />
+    <Compile Include="Helpers\General\Validation.cs" />
+    <Compile Include="Helpers\Globalisation\GlobalisationRouteHandler.cs" />
+    <Compile Include="Helpers\Globalisation\LanguageHelper.cs" />
+    <Compile Include="Helpers\Globalisation\RouteHelper.cs" />
+    <Compile Include="Helpers\Html\HtmlHelpers.cs" />
+    <Compile Include="Helpers\MVC\RazorViewExtension.cs" />
+    <Compile Include="Models\AuthModels.cs" />
+    <Compile Include="Models\DashBoardPageModels.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\UserModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AjaxRepository.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\HomeRepository.cs" />
+    <Compile Include="Resources\Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Stylesheets\LTEComponents\css\AdminLTE.css" />
+    <Content Include="Content\Stylesheets\LTEComponents\css\fullcalendar.css" />
+    <Content Include="Content\Stylesheets\LTEComponents\css\fullcalendar.print.css" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\ionicons.svg" />
+    <Content Include="Content\Stylesheets\LTEComponents\css\font-awesome.min.css" />
+    <Content Include="Content\Stylesheets\LTEComponents\css\ionicons.min.css" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\ajax-loader.gif" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\ajax-loader1.gif" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\menAdmin.png" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\menPatient.png" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\femPatient.png" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\femNPatient.png" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\menDoctor.png" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\blur-background04.jpg" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\blur-background08.jpg" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\blur-background09.jpg" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\icons.png" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\sprite-skin-flat.png" />
+    <Content Include="Content\Stylesheets\LTEComponents\img\sprite-skin-nice.png" />
+    <Content Include="Content\Stylesheets\Site\site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\BForms\Bundles\css\stylesheets.css" />
+    <Content Include="Scripts\BForms\Bundles\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\BForms\Bundles\images\bg-user.png" />
+    <Content Include="Scripts\BForms\Bundles\images\chosen-sprite.png" />
+    <Content Include="Scripts\BForms\Bundles\images\edit-pencil.gif" />
+    <Content Include="Scripts\BForms\Bundles\images\grippy.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-arr-down.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-arr-left.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-arr-right.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-arr-up.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-calendar.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-down_arrow-small.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-grippy.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-order_down.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-order_up.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-remove.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-right_arrow-small.png" />
+    <Content Include="Scripts\BForms\Bundles\images\icn-time.png" />
+    <Content Include="Scripts\BForms\Bundles\images\preloader-small.gif" />
+    <Content Include="Scripts\BForms\Bundles\images\preloader.gif" />
+    <Content Include="Scripts\BForms\Bundles\images\preloader_16x16.gif" />
+    <Content Include="Scripts\BForms\Bundles\images\select2-spinner.gif" />
+    <Content Include="Scripts\BForms\Bundles\images\select2.png" />
+    <Content Include="Scripts\BForms\Bundles\images\select2x2.png" />
+    <Content Include="Scripts\BForms\Bundles\js\components.js" />
+    <Content Include="Scripts\BForms\Bundles\js\iefix.js" />
+    <Content Include="Scripts\BForms\Bundles\js\plugins.js" />
+    <Content Include="Scripts\BForms\Bundles\js\widgets.js" />
+    <Content Include="Scripts\BForms\Components\Amplify\amplify.js" />
+    <Content Include="Scripts\BForms\Components\Bootstrap\css\bootstrap.css" />
+    <Content Include="Scripts\BForms\Components\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\BForms\Components\Bootstrap\js\bootstrap.js" />
+    <Content Include="Scripts\BForms\Components\FileUpload\jquery.fileupload-process.js" />
+    <Content Include="Scripts\BForms\Components\FileUpload\jquery.fileupload-validate.js" />
+    <Content Include="Scripts\BForms\Components\FileUpload\jquery.fileupload.js" />
+    <Content Include="Scripts\BForms\Components\FileUpload\jquery.iframe-transport.js" />
+    <Content Include="Scripts\BForms\Components\Gremlins\gremlins.min.js" />
+    <Content Include="Scripts\BForms\Components\HistoryJS\jquery.history.js" />
+    <Content Include="Scripts\BForms\Components\Html5shiv\html5shiv.js" />
+    <Content Include="Scripts\BForms\Components\ICanHaz\ICanHaz.js" />
+    <Content Include="Scripts\BForms\Components\ICanHaz\singleton-ich.js" />
+    <Content Include="Scripts\BForms\Components\jQuery-ui\jquery-ui.core.js" />
+    <Content Include="Scripts\BForms\Components\jQuery\jquery-migrate.js" />
+    <Content Include="Scripts\BForms\Components\jQuery\jquery.js" />
+    <Content Include="Scripts\BForms\Components\NestedSortable\jquery.mjs.nestedSortable.js" />
+    <Content Include="Scripts\BForms\Components\PlaceholderShim\jquery.html5-placeholder-shim.js" />
+    <Content Include="Scripts\BForms\Components\RequireJS\depend.js" />
+    <Content Include="Scripts\BForms\Components\RequireJS\i18n.js" />
+    <Content Include="Scripts\BForms\Components\RequireJS\require.js" />
+    <Content Include="Scripts\BForms\Components\RequireJS\text.js" />
+    <Content Include="Scripts\BForms\Components\Respond\respond.js" />
+    <Content Include="Scripts\BForms\Components\SelectorSet\jquery.selector-set.js" />
+    <Content Include="Scripts\BForms\Components\SelectorSet\selector-set.js" />
+    <Content Include="Scripts\BForms\Images\bg-user.png" />
+    <Content Include="Scripts\BForms\Images\chosen-sprite.png" />
+    <Content Include="Scripts\BForms\Images\icn-down_arrow-small.png" />
+    <Content Include="Scripts\BForms\Images\icn-grippy.png" />
+    <Content Include="Scripts\BForms\Images\icn-order_down.png" />
+    <Content Include="Scripts\BForms\Images\icn-order_up.png" />
+    <Content Include="Scripts\BForms\Images\icn-right_arrow-small.png" />
+    <Content Include="Scripts\BForms\Images\preloader-small.gif" />
+    <Content Include="Scripts\BForms\Images\preloader.gif" />
+    <Content Include="Scripts\BForms\Plugins\CheckBoxList\bforms.checklist.js" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\css\bforms.datepicker.css" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\images\icn-arr-down.png" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\images\icn-arr-left.png" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\images\icn-arr-right.png" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\images\icn-arr-up.png" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\images\icn-calendar.png" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\images\icn-remove.png" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\images\icn-time.png" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\js\bforms.datepicker.js" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\js\bforms.datepicker.range.js" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\js\bforms.datepicker.tmpl.js" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\js\i18n\lang.bundle.js" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\js\lib\moment.isocalendar.js" />
+    <Content Include="Scripts\BForms\Plugins\Datepicker\js\lib\moment.js" />
+    <Content Include="Scripts\BForms\Plugins\NavScroll\bforms.navScroll.js" />
+    <Content Include="Scripts\BForms\Plugins\RadioButtonList\bforms.radiolist.js" />
+    <Content Include="Scripts\BForms\Plugins\Rangepicker\css\bforms.rangepicker.css" />
+    <Content Include="Scripts\BForms\Plugins\Rangepicker\css\bforms.rangepicker.min.css" />
+    <Content Include="Scripts\BForms\Plugins\Rangepicker\images\icn-arr-down.png" />
+    <Content Include="Scripts\BForms\Plugins\Rangepicker\images\icn-arr-up.png" />
+    <Content Include="Scripts\BForms\Plugins\Rangepicker\images\icn-remove.png" />
+    <Content Include="Scripts\BForms\Plugins\Rangepicker\js\bforms.rangepicker.js" />
+    <Content Include="Scripts\BForms\Plugins\Select2\css\select2.css" />
+    <Content Include="Scripts\BForms\Plugins\Select2\images\select2-spinner.gif" />
+    <Content Include="Scripts\BForms\Plugins\Select2\images\select2.png" />
+    <Content Include="Scripts\BForms\Plugins\Select2\images\select2x2.png" />
+    <Content Include="Scripts\BForms\Plugins\Select2\js\bforms.select2.js" />
+    <Content Include="Scripts\BForms\Plugins\Select2\js\i18n\select2-fr.js" />
+    <Content Include="Scripts\BForms\Plugins\Select2\js\i18n\select2-ro.js" />
+    <Content Include="Scripts\BForms\Plugins\Select2\js\select2.js" />
+    <Content Include="Scripts\BForms\Plugins\Typeahead\bforms.typeahead.js" />
+    <Content Include="Scripts\BForms\Plugins\Typeahead\typeahead.js" />
+    <Content Include="Scripts\BForms\Plugins\UI\bforms.extensions.js" />
+    <Content Include="Scripts\BForms\Plugins\UI\bforms.initUI.js" />
+    <Content Include="Scripts\BForms\Plugins\UI\bforms.resetInput.js" />
+    <Content Include="Scripts\BForms\Plugins\Validation\bforms.validate.js" />
+    <Content Include="Scripts\BForms\Plugins\Validation\bforms.validate.unobtrusive.js" />
+    <Content Include="Scripts\BForms\Plugins\Validation\i18n\bforms.validate-fr.js" />
+    <Content Include="Scripts\BForms\Plugins\Validation\i18n\bforms.validate-ro.js" />
+    <Content Include="Scripts\BForms\Stylesheets\bforms.core.css" />
+    <Content Include="Scripts\BForms\Stylesheets\bforms.formbuilder.css" />
+    <Content Include="Scripts\BForms\Stylesheets\bforms.grid.css" />
+    <Content Include="Scripts\BForms\Stylesheets\bforms.groupeditor.css" />
+    <Content Include="Scripts\BForms\Stylesheets\bforms.groupeditor.min.css" />
+    <Content Include="Scripts\BForms\Stylesheets\bforms.pager.css" />
+    <Content Include="Scripts\BForms\Widgets\FileUpload\bforms.fileUpload.js" />
+    <Content Include="Scripts\BForms\Widgets\FormBuilder\bforms.formBuilder.formRenderer.js" />
+    <Content Include="Scripts\BForms\Widgets\FormBuilder\bforms.formBuilder.js" />
+    <Content Include="Scripts\BForms\Widgets\FormBuilder\bforms.formBuilder.models.js" />
+    <Content Include="Scripts\BForms\Widgets\FormBuilder\bforms.formBuilder.templates.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.editable.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.form.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.grid.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.pager.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.toolbar.add.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.toolbar.advancedSearch.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.toolbar.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.toolbar.order.js" />
+    <Content Include="Scripts\BForms\Widgets\Grid\js\bforms.toolbar.quickSearch.js" />
+    <Content Include="Scripts\BForms\Widgets\GroupEditor\bforms.groupEditor.js" />
+    <Content Include="Scripts\BForms\Widgets\InlineQuestion\bforms.inlineQuestion.js" />
+    <Content Include="Scripts\BForms\Widgets\Panel\bforms.panel.js" />
+    <Content Include="Scripts\BForms\Widgets\Sortable\bforms.sortable.js" />
+    <Content Include="Scripts\BForms\Widgets\Taglist\bforms.taglist.js" />
+    <Content Include="Scripts\BForms\Widgets\Utils\bforms.ajax.js" />
+    <Content Include="Scripts\BForms\Widgets\Utils\bforms.namespace.js" />
+    <Content Include="Scripts\BForms\Widgets\Utils\bforms.themeSelect.js" />
+    <Content Include="Scripts\Components\AdminLTE\adminLTE.js" />
+    <Content Include="Scripts\Components\AdminLTE\initLTE.js" />
+    <Content Include="Scripts\Components\Widgets\fullcalendar.js" />
+    <Content Include="Scripts\Controllers\Admin\Profile\index.js" />
+    <Content Include="Scripts\Controllers\Admin\Users\index.js" />
+    <Content Include="Scripts\Components\Widgets\ajaxList.js" />
+    <Content Include="Scripts\Controllers\Doctor\Appointments\index.js" />
+    <Content Include="Scripts\Controllers\Doctor\Prescriptions\index.js" />
+    <Content Include="Scripts\Controllers\Doctor\Profile\index.js" />
+    <Content Include="Scripts\Controllers\Doctor\Users\index.js" />
+    <Content Include="Scripts\Controllers\Patient\Appointments\index.js" />
+    <Content Include="Scripts\Controllers\Patient\Profile\index.js" />
+    <Content Include="Scripts\Controllers\Patient\Trace\index.js" />
+    <Content Include="Scripts\Controllers\Root\Authentication\login.js" />
+    <Content Include="Scripts\Controllers\Root\Home\index.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RequireJS.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RequireJS.Release.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Resource.fr-FR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.en-US.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.ro-RO.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\RequireJS.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\FontAwesome.otf" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\ionicons.eot" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\ionicons.ttf" />
+    <Content Include="Content\Stylesheets\LTEComponents\fonts\ionicons.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Common\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Patient\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Authentication\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Common\Views\Profile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Patient\Views\Profile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Profile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Users\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Common\Views\Users\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Common\Views\Users\Grid\_Grid.cshtml" />
+    <Content Include="Areas\Common\Views\Users\Grid\_NoRecords.cshtml" />
+    <Content Include="Areas\Common\Views\Users\Grid\_NoResults.cshtml" />
+    <Content Include="Areas\Common\Views\Users\Toolbar\_New.cshtml" />
+    <Content Include="Areas\Common\Views\Users\Toolbar\_Search.cshtml" />
+    <Content Include="Areas\Common\Views\Users\Toolbar\_Toolbar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Users\Toolbar\_Toolbar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Users\Grid\_Grid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Users\Grid\_NoRecords.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Users\Grid\_NoResults.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Users\Toolbar\_New.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Users\Toolbar\_Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Users\Grid\_Grid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Users\Grid\_NoRecords.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Users\Grid\_NoResults.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Users\Toolbar\_New.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Users\Toolbar\_Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Users\Toolbar\_Toolbar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Common\Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Hesira.Entities.csproj">
+      <Project>{4b976ac3-48dc-4568-bb5f-71f1adb505d6}</Project>
+      <Name>Hesira.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hesira.Common\Hesira.Common.csproj">
+      <Project>{098d2543-d0ac-465f-86ac-1e64fac01d68}</Project>
+      <Name>Hesira.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hesira.Models\Hesira.Models.csproj">
+      <Project>{bfea3c1d-c1ab-45c0-8abe-300e90df30e9}</Project>
+      <Name>Hesira.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hesira.Repositories\Hesira.Repositories.csproj">
+      <Project>{48f5da37-d091-4f8e-9a2e-0a6bac43a5ce}</Project>
+      <Name>Hesira.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hesira.Services\Hesira.Services.csproj">
+      <Project>{d422167f-d7c5-454d-862c-3efd01345583}</Project>
+      <Name>Hesira.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Stylesheets\bforms.pager.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Stylesheets\bforms.groupeditor.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Stylesheets\bforms.grid.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Stylesheets\bforms.formbuilder.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Stylesheets\bforms.core.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\RequireJS.Release.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Plugins\Rangepicker\css\bforms.rangepicker.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Plugins\Datepicker\css\bforms.datepicker.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Components\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Components\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Components\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Bundles\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Bundles\fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\BForms\Bundles\fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Common\Views\Profile\Editable\_Contact.cshtml" />
+    <Content Include="Areas\Common\Views\Profile\Editable\_UserInfo.cshtml" />
+    <Content Include="Areas\Common\Views\Profile\Readonly\_Basic.cshtml" />
+    <Content Include="Areas\Common\Views\Profile\Readonly\_Contact.cshtml" />
+    <Content Include="Areas\Common\Views\Profile\Readonly\_UserInfo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Common\Views\Appointments\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Appointments\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Patient\Views\Appointments\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Prescriptions\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Prescriptions\TeamBuilder\_GroupItem.cshtml" />
+    <Content Include="Areas\Doctor\Views\Prescriptions\TeamBuilder\_Index.cshtml" />
+    <Content Include="Areas\Doctor\Views\Prescriptions\TeamBuilder\_TabItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Doctor\Views\Prescriptions\TeamBuilder\_FormItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Patient\Views\Trace\Index.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58442</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/Hesira</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost/Hesira</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

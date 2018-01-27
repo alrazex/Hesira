@@ -1,0 +1,156 @@
+﻿@using BForms.Html
+@using BForms.Models
+@using Hesira.Helpers.General
+@using Hesira.Helpers.Html
+@using Hesira.Resources
+@model Hesira.Models.DashBoardPageModel
+@{
+
+    ViewBag.Title = "Hesira | " + Resource.Dashboard;
+    ViewBag.ContentHeader = Resource.Dashboard;
+    ViewBag.ContentHeaderSmall = "";
+
+    var userData = Session["UserData"] as UserData;
+
+    var profileUrl = string.Empty;
+    var usersUrl = string.Empty;
+    var appointmentsUrl = string.Empty;
+    var traceUrl = string.Empty;
+
+    if (userData != null)
+    {
+        if (userData.IsAdmin)
+        {
+            profileUrl = Url.Action("Index", "Profile", new { area = "Admin", userId = userData.Id });
+            usersUrl = Url.Action("Index", "Users", new { area = "Admin" });
+
+            if (userData.IsAdmin)
+            {
+                appointmentsUrl = Url.Action("Index", "Appointments", new { area = "Doctor" });
+            }
+        }
+        else if (userData.IsDoctor)
+            {
+                profileUrl = Url.Action("Index", "Profile", new { area = "Doctor", userId = userData.Id });
+                usersUrl = Url.Action("Index", "Users", new { area = "Doctor" });
+                appointmentsUrl = Url.Action("Index", "Appointments", new { area = "Doctor" });
+            }
+            else if (userData.IsPatient)
+                {
+                    profileUrl = Url.Action("Index", "Profile", new { area = "Patient", userId = userData.Id });
+                    appointmentsUrl = Url.Action("Index", "Appointments", new { area = "Patient" });
+                    traceUrl = Url.Action("Index", "Trace", new { area = "Patient", userId = userData.Id });
+
+                }
+
+
+    }
+}
+
+
+<div class="row">
+
+    <div class="col-lg-4 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>
+                    @{ var procent = String.Empty;}
+                    @if (userData.Gender != null && !string.IsNullOrEmpty(userData.Profession))
+                    {
+                        procent = "100";
+                    }
+                    else if (userData.Profession == null || userData.Gender == null)
+                    {
+                        procent = "90";
+                    }
+                    else
+                    {
+                        procent = "80";
+                    }
+
+                    @procent<sup style="font-size: 20px">%</sup>
+                </h3>
+                <p>
+                    @Resource.ProfileCompleteness
+                </p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-clipboard"></i>
+            </div>
+            <a href=@profileUrl class="small-box-footer">
+                @Resource.MoreInfo @Html.BsGlyphicon(Glyphicon.CircleArrowRight)
+            </a>
+        </div>
+    </div>
+
+    @if (userData.IsDoctor || userData.IsPatient)
+    {
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>
+                        @Model.NoOfAppointments
+                    </h3>
+                    <p>
+                        @Resource.Appointments
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-calendar"></i>
+                </div>
+                <a href=@appointmentsUrl class="small-box-footer">
+                    @Resource.MoreInfo @Html.BsGlyphicon(Glyphicon.CircleArrowRight)
+                </a>
+            </div>
+        </div>
+    }
+
+    @if (userData.IsAdmin || userData.IsDoctor)
+    {
+        <div class="col-lg-4 col-xs-6">
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>
+                        @Model.NoOfUsers
+                    </h3>
+                    <p>
+                        @Resource.Users
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-stalker"></i>
+                </div>
+                <a href=@usersUrl class="small-box-footer">
+                    @Resource.MoreInfo @Html.BsGlyphicon(Glyphicon.CircleArrowRight)
+                </a>
+            </div>
+        </div>
+
+    }
+    else
+    {
+
+        <div class="col-lg-4 col-xs-6">
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>
+                        @Model.NoOfTraces
+                    </h3>
+                    <p>
+                        @Resource.MedicalTrace
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-medkit"></i>
+                </div>
+                <a href=@traceUrl class="small-box-footer">
+                    @Resource.MoreInfo @Html.BsGlyphicon(Glyphicon.CircleArrowRight)
+                </a>
+            </div>
+        </div>
+
+    }
+
+</div>

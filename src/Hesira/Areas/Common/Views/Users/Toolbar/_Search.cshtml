@@ -1,0 +1,87 @@
+﻿@using BForms.Html
+@using BForms.Models
+@using Hesira.Models
+@using Hesira.Resources
+@model Hesira.Areas.Common.Models.UserSearchModel
+
+@using (Html.BsBeginForm(BsTheme.Purple, new { @class = "js-searchForm" }))
+{
+    <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+        @Html.BsLabelFor(m => m.Name)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.User)
+            @Html.BsInputFor(m => m.Name)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+        @Html.BsLabelFor(m => m.CNP)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Barcode)
+            @Html.BsInputFor(m => m.CNP)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+        @Html.BsLabelFor(m => m.GenderBtnList)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.User)
+            @Html.BsSelectFor(m => m.GenderBtnList, new Dictionary<string, object>() { { "data-initialvalue", (byte)GenderEnum.Both } }, new Dictionary<string, object> { { "preventDeselect", true } })
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+        @Html.BsLabelFor(m => m.EnableBtnList)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Stats)
+            @Html.BsSelectFor(model => model.EnableBtnList, new Dictionary<string, object>() { { "data-initialvalue", (byte)YesNoEnum.All } },  new Dictionary<string, object> { { "preventDeselect", true } })
+        </div>
+    </div>
+
+@*
+    <div class="col-sm-6 col-md-6  col-lg-4 form-group">
+        @Html.BsLabelFor(m => m.AgeRange)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Time)
+            @Html.BsRangeFor(model => model.AgeRange)
+        </div>
+    </div>
+
+*@
+
+    <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+        @Html.BsLabelFor(m => m.Email)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Envelope)
+            @Html.BsInputFor(model => model.Email)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 form-group">
+        @Html.BsLabelFor(m => m.RoleBtnList)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Star)
+            @Html.BsSelectFor(model => model.RoleBtnList, new { data_initialvalue = (byte)UserRoles.All }, 
+    new Dictionary<string, object> { { "preventDeselect", true } })
+        </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-6 col-lg-6 form-group">
+        @Html.BsLabelFor(m => m.CitizenshipDropdown)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.MapMarker)
+            @Html.BsSelectFor(model => model.CitizenshipDropdown, new { @class = "no-initUI js-citizenshipList" })
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="col-sm-12 col-md-12 col-lg-12 grid_toolbar_submit">
+        <button type="submit" class="btn btn-default js-btn-search">@Resource.Search</button>
+        <a href="#" class="js-btn-reset">@Resource.Reset</a>
+    </div>
+}

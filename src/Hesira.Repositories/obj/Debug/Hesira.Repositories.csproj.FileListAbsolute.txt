@@ -1,0 +1,17 @@
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Hesira.Repositories.dll.config
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Hesira.Repositories.dll
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Hesira.Repositories.pdb
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Entities.dll
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\EntityFramework.dll
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\EntityFramework.SqlServer.dll
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Hesira.Common.dll
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Hesira.Models.dll
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Entities.pdb
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Entities.dll.config
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Hesira.Common.pdb
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\Hesira.Models.pdb
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\EntityFramework.xml
+D:\Workspace\TFS\Hesira\Hesira.Repositories\bin\Debug\EntityFramework.SqlServer.xml
+D:\Workspace\TFS\Hesira\Hesira.Repositories\obj\Debug\Hesira.Repositories.csprojResolveAssemblyReference.cache
+D:\Workspace\TFS\Hesira\Hesira.Repositories\obj\Debug\Hesira.Repositories.dll
+D:\Workspace\TFS\Hesira\Hesira.Repositories\obj\Debug\Hesira.Repositories.pdb

@@ -1,0 +1,6 @@
+D:\Workspace\TFS\Hesira\Hesira\obj\Debug\Hesira.csprojResolveAssemblyReference.cache
+D:\Workspace\TFS\Hesira\Hesira\obj\Debug\Hesira.Resources.Resource.resources
+D:\Workspace\TFS\Hesira\Hesira\obj\Debug\Hesira.Resources.Resource.fr-FR.resources
+D:\Workspace\TFS\Hesira\Hesira\obj\Debug\Hesira.Resources.Resource.en-US.resources
+D:\Workspace\TFS\Hesira\Hesira\obj\Debug\Hesira.Resources.Resource.ro-RO.resources
+D:\Workspace\TFS\Hesira\Hesira\obj\Debug\Hesira.csproj.GenerateResource.Cache

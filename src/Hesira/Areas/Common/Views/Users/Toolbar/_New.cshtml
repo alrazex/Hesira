@@ -1,0 +1,157 @@
+﻿@using BForms.Html
+@using BForms.Models
+@using Hesira.Models
+@using Hesira.Resources
+@model Hesira.Areas.Common.Models.UserNewModel
+
+
+@using (Html.BsBeginForm(BsTheme.Purple, new { @class = "js-newForm" }))
+{
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.Firstname)">
+        @Html.BsLabelFor(m => m.Firstname)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.User)
+            @Html.BsInputFor(m => m.Firstname)
+            @Html.BsValidationFor(m => m.Firstname)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.Lastname)">
+        @Html.BsLabelFor(m => m.Lastname)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.User)
+            @Html.BsInputFor(m => m.Lastname)
+            @Html.BsValidationFor(m => m.Lastname)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.Email)">
+        @Html.BsLabelFor(m => m.Email)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Envelope)
+            @Html.BsInputFor(model => model.Email)
+            @Html.BsValidationFor(m => m.Email)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.CNP)">
+        @Html.BsLabelFor(m => m.CNP)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Barcode)
+            @Html.BsInputFor(model => model.CNP)
+            @Html.BsValidationFor(m => m.CNP)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.Password)">
+        @Html.BsLabelFor(m => m.Password)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Lock)
+            @Html.BsInputFor(model => model.Password)
+            @Html.BsValidationFor(m => m.Password)
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.GenderBtnList)">
+        @Html.BsLabelFor(m => m.GenderBtnList)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.User)
+            @Html.BsSelectFor(model => model.GenderBtnList, new Dictionary<string, object>() { { "data-initialvalue", (byte)GenderEnum.Male } }, new Dictionary<string, object> { { "preventDeselect", true } })
+            @Html.BsValidationFor(m => m.GenderBtnList)
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-6 col-lg-6 form-group @Html.BsValidationCssFor(m => m.RoleBtnList)">
+        @Html.BsLabelFor(m => m.RoleBtnList)
+        <div class="input-group js-userRoles">
+            @Html.BsGlyphiconAddon(Glyphicon.Star)
+            @Html.BsSelectFor(model => model.RoleBtnList, new Dictionary<string, object>() { { "data-initialvalue", (byte)UserRoles.Patient } }, new Dictionary<string, object> { { "preventDeselect", true } })
+            @Html.BsValidationFor(m => m.RoleBtnList)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-6 form-group @Html.BsValidationCssFor(m => m.BirthDayPicker)">
+        @Html.BsLabelFor(m => m.BirthDayPicker)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Time)
+            @Html.BsInputFor(model => model.BirthDayPicker, new Dictionary<string, object>()
+            {
+                {"class", "purple"}
+            }, new { wrapperClass = "purple", closeOnChange = true })
+            @Html.BsValidationFor(m => m.BirthDayPicker)
+        </div>
+
+    </div>
+
+
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.Countries)">
+        @Html.BsLabelFor(m => m.Countries)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Globe)
+            @Html.BsSelectFor(model => model.Countries, new { @class = "no-initUI js-countriesDropdown" })
+            @Html.BsValidationFor(m => m.Countries)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.PhysicalAddress)">
+        @Html.BsLabelFor(m => m.PhysicalAddress)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.MapMarker)
+            @Html.BsInputFor(model => model.PhysicalAddress)
+            @Html.BsValidationFor(m => m.PhysicalAddress)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.PhoneNumber)">
+        @Html.BsLabelFor(m => m.PhoneNumber)
+        <div class="input-group">
+            @Html.BsGlyphiconAddon(Glyphicon.Phone)
+            @Html.BsInputFor(model => model.PhoneNumber)
+            @Html.BsValidationFor(m => m.PhoneNumber)
+        </div>
+    </div>
+
+
+
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.Citizenship)">
+        @Html.BsLabelFor(m => m.Citizenship)
+        <div class="input-group">
+            @Html.BsSelectFor(model => model.Citizenship, new { @class = "no-initUI js-citizenshipList" })
+            @Html.BsValidationFor(m => m.Citizenship)
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.State)">
+        @Html.BsLabelFor(m => m.State)
+        <div class="input-group">
+            @Html.BsSelectFor(model => model.State, new { @class = "js-userState" })
+            @Html.BsValidationFor(m => m.State)
+        </div>
+    </div>
+
+
+    <div class="col-sm-6 col-lg-4 form-group @Html.BsValidationCssFor(m => m.Profession)">
+        @Html.BsLabelFor(m => m.Profession)
+        <div class="input-group">
+            @Html.BsInputFor(model => model.Profession)
+            @Html.BsValidationFor(m => m.Profession)
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="col-sm-12 col-md-12 col-lg-12 grid_toolbar_submit">
+        <button type="submit" class="btn btn-default js-btn-save" data-action="@Url.Action("New")">@Resource.Add</button>
+        <a href="#" class="js-btn-reset">@Resource.Reset</a>
+    </div>
+}

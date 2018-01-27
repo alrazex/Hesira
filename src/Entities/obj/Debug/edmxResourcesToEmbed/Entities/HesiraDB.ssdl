@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HesiraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Addresses">
+    <Key>
+      <PropertyRef Name="Id_Address" />
+    </Key>
+    <Property Name="Id_Address" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Country" Type="int" Nullable="false" />
+    <Property Name="PhysicalAddress" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Appointments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="Trace" Type="nvarchar(max)" />
+    <Property Name="Id_Prescription" Type="bigint" />
+    <Property Name="Id_Patient" Type="bigint" Nullable="false" />
+    <Property Name="Id_Doctor" Type="bigint" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConsultationRooms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="CUI" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CAS" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Approved" Type="bit" Nullable="false" />
+    <Property Name="Decision" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Current" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumericalCode" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="CountryNameLowerCase" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryNameUpperCase" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ISO_ALPHA3" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="ISO_ALPHA2" Type="char" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Diseases">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Drugs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GeneralName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ComercialName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Vendor" Type="nvarchar(max)" />
+    <Property Name="OriginCountry" Type="nvarchar(max)" />
+    <Property Name="PresentationForm" Type="nvarchar(max)" />
+    <Property Name="ReductionClass" Type="nvarchar" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DrugsDiseases">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Disease" Type="int" Nullable="false" />
+    <Property Name="Id_Drug" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Order" Type="int" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id_Appointment" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prescriptions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Series" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="bigint" Nullable="false" />
+    <Property Name="Id_Patient" Type="bigint" Nullable="false" />
+    <Property Name="PrescriptionDate" Type="date" Nullable="false" />
+    <Property Name="Id_Doctor" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrescriptionsDrugs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id_Prescription" Type="bigint" Nullable="false" />
+    <Property Name="Id_Drug" Type="bigint" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Days" Type="int" Nullable="false" />
+    <Property Name="Id_Disease" Type="int" Nullable="false" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lastname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsDoctor" Type="bit" Nullable="false" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="SidebarMode" Type="bit" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+    <Property Name="CNP" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="IsPatient" Type="bit" Nullable="false" />
+    <Property Name="LastAuthDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UsersProfiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_User" Type="bigint" Nullable="false" />
+    <Property Name="Birthday" Type="date" Nullable="false" />
+    <Property Name="Id_Address" Type="bigint" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="LastVisitDate" Type="date" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="Profession" Type="nvarchar(max)" />
+    <Property Name="Id_Citizenship" Type="int" Nullable="false" />
+    <Property Name="Id_State" Type="int" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersStates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="AppointmentFileList">
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="1" />
+    <End Role="Files" Type="Self.Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Files">
+        <PropertyRef Name="Id_Appointment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AppointmentPrescription">
+    <End Role="Prescriptions" Type="Self.Prescriptions" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescriptions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Id_Prescription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AppointmentsForDoctor">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Id_Doctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AppointmentsForPatient">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Id_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Country">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Addresses">
+        <PropertyRef Name="Id_Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiseasesList">
+    <End Role="Diseases" Type="Self.Diseases" Multiplicity="1" />
+    <End Role="DrugsDiseases" Type="Self.DrugsDiseases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diseases">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DrugsDiseases">
+        <PropertyRef Name="Id_Disease" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DrugDiseasesList">
+    <End Role="Drugs" Type="Self.Drugs" Multiplicity="1" />
+    <End Role="DrugsDiseases" Type="Self.DrugsDiseases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drugs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DrugsDiseases">
+        <PropertyRef Name="Id_Drug" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DrugPrescriptionDiseasesList">
+    <End Role="Diseases" Type="Self.Diseases" Multiplicity="1" />
+    <End Role="PrescriptionsDrugs" Type="Self.PrescriptionsDrugs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diseases">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrescriptionsDrugs">
+        <PropertyRef Name="Id_Disease" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrescriptionDrugList">
+    <End Role="Drugs" Type="Self.Drugs" Multiplicity="1" />
+    <End Role="PrescriptionsDrugs" Type="Self.PrescriptionsDrugs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drugs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrescriptionsDrugs">
+        <PropertyRef Name="Id_Drug" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrescriptionsDrugsPrescription">
+    <End Role="Prescriptions" Type="Self.Prescriptions" Multiplicity="1" />
+    <End Role="PrescriptionsDrugs" Type="Self.PrescriptionsDrugs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescriptions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrescriptionsDrugs">
+        <PropertyRef Name="Id_Prescription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrescriptionsListForDoctor">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Prescriptions" Type="Self.Prescriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prescriptions">
+        <PropertyRef Name="Id_Doctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrescriptionsListForPatient">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Prescriptions" Type="Self.Prescriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prescriptions">
+        <PropertyRef Name="Id_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfileAddress">
+    <End Role="Addresses" Type="Self.Addresses" Multiplicity="0..1" />
+    <End Role="UsersProfiles" Type="Self.UsersProfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addresses">
+        <PropertyRef Name="Id_Address" />
+      </Principal>
+      <Dependent Role="UsersProfiles">
+        <PropertyRef Name="Id_Address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfileCitizenship">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="UsersProfiles" Type="Self.UsersProfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersProfiles">
+        <PropertyRef Name="Id_Citizenship" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfilesList">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UsersProfiles" Type="Self.UsersProfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersProfiles">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfileState">
+    <End Role="UsersStates" Type="Self.UsersStates" Multiplicity="0..1" />
+    <End Role="UsersProfiles" Type="Self.UsersProfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersStates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersProfiles">
+        <PropertyRef Name="Id_State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HesiraModelStoreContainer">
+    <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsultationRooms" EntityType="Self.ConsultationRooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Diseases" EntityType="Self.Diseases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Drugs" EntityType="Self.Drugs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DrugsDiseases" EntityType="Self.DrugsDiseases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prescriptions" EntityType="Self.Prescriptions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrescriptionsDrugs" EntityType="Self.PrescriptionsDrugs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersProfiles" EntityType="Self.UsersProfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersStates" EntityType="Self.UsersStates" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="AppointmentFileList" Association="Self.AppointmentFileList">
+      <End Role="Appointments" EntitySet="Appointments" />
+      <End Role="Files" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="AppointmentPrescription" Association="Self.AppointmentPrescription">
+      <End Role="Prescriptions" EntitySet="Prescriptions" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="AppointmentsForDoctor" Association="Self.AppointmentsForDoctor">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="AppointmentsForPatient" Association="Self.AppointmentsForPatient">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="Country" Association="Self.Country">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Addresses" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="DiseasesList" Association="Self.DiseasesList">
+      <End Role="Diseases" EntitySet="Diseases" />
+      <End Role="DrugsDiseases" EntitySet="DrugsDiseases" />
+    </AssociationSet>
+    <AssociationSet Name="DrugDiseasesList" Association="Self.DrugDiseasesList">
+      <End Role="Drugs" EntitySet="Drugs" />
+      <End Role="DrugsDiseases" EntitySet="DrugsDiseases" />
+    </AssociationSet>
+    <AssociationSet Name="DrugPrescriptionDiseasesList" Association="Self.DrugPrescriptionDiseasesList">
+      <End Role="Diseases" EntitySet="Diseases" />
+      <End Role="PrescriptionsDrugs" EntitySet="PrescriptionsDrugs" />
+    </AssociationSet>
+    <AssociationSet Name="PrescriptionDrugList" Association="Self.PrescriptionDrugList">
+      <End Role="Drugs" EntitySet="Drugs" />
+      <End Role="PrescriptionsDrugs" EntitySet="PrescriptionsDrugs" />
+    </AssociationSet>
+    <AssociationSet Name="PrescriptionsDrugsPrescription" Association="Self.PrescriptionsDrugsPrescription">
+      <End Role="Prescriptions" EntitySet="Prescriptions" />
+      <End Role="PrescriptionsDrugs" EntitySet="PrescriptionsDrugs" />
+    </AssociationSet>
+    <AssociationSet Name="PrescriptionsListForDoctor" Association="Self.PrescriptionsListForDoctor">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Prescriptions" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="PrescriptionsListForPatient" Association="Self.PrescriptionsListForPatient">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Prescriptions" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="ProfileAddress" Association="Self.ProfileAddress">
+      <End Role="Addresses" EntitySet="Addresses" />
+      <End Role="UsersProfiles" EntitySet="UsersProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="ProfileCitizenship" Association="Self.ProfileCitizenship">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="UsersProfiles" EntitySet="UsersProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="ProfilesList" Association="Self.ProfilesList">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersProfiles" EntitySet="UsersProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="ProfileState" Association="Self.ProfileState">
+      <End Role="UsersStates" EntitySet="UsersStates" />
+      <End Role="UsersProfiles" EntitySet="UsersProfiles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

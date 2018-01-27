@@ -1,0 +1,88 @@
+﻿@using Hesira.Helpers.General
+@using System.Collections.Generic
+@using System.Linq
+@using BForms.Html
+@using BForms.Models
+@using Hesira.Resources
+@model Hesira.Areas.Common.Models.AppointmentsPageModel
+
+@{
+    var userData = Session["UserData"] as UserData;
+    if (userData.IsDoctor)
+    {
+        ViewBag.Title = "Hesira | " + Resource.Doctor + " | " + Resource.Appointments;
+
+    }
+    else
+    {
+        ViewBag.Title = "Hesira | " + Resource.Patient + " | " + Resource.Appointments;
+    }
+    Layout = "~/Areas/Common/Views/Shared/_Layout.cshtml";
+    ViewBag.ContentHeader = Resource.Appointments;
+    ViewBag.ContentHeaderSmall = "";
+}
+
+
+
+
+<br />
+
+@if (userData.IsPatient)
+{
+
+
+
+    using (Html.BsBeginForm("Create", "Appointments", new { }, FormMethod.Post, new { @class = "bs-form js-newAppointmentForm" }, BsTheme.Blue))
+    {
+
+
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="panel-default panel" style="overflow: hidden">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            @Html.BsGlyphicon(Glyphicon.InfoSign) @Resource.BasicInfo
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-12 col-md-12  form-group @Html.BsValidationCssFor(m => m.NewAppoitmentModel.DoctorsDropdown)">
+                            @Html.BsLabelFor(m => m.NewAppoitmentModel.DoctorsDropdown)
+                            <div class="input-group">
+                                @Html.BsSelectFor(m => m.NewAppoitmentModel.DoctorsDropdown)
+                                @Html.BsValidationFor(m => m.NewAppoitmentModel.DoctorsDropdown)
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12  form-group @Html.BsValidationCssFor(m => m.NewAppoitmentModel.DatePicker)">
+                            @Html.BsLabelFor(m => m.NewAppoitmentModel.DatePicker)
+                            <div class="input-group">
+                                @Html.BsInputFor(m => m.NewAppoitmentModel.DatePicker, new Dictionary<string, object>(){
+                                {"class", "blue"}
+                                }, new { wrapperClass = "blue", closeOnChange = true })
+                                @Html.BsValidationFor(m => m.NewAppoitmentModel.DatePicker)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-12 col-lg-12 form-group">
+            <button type="submit" class="btn btn-primary js-submitAddForm bs-savePanel">@Resource.Save</button>
+            <a class="btn btn-danger pull-right bs-cancelEdit js-resetForm" type='button'>@Resource.Reset</a>
+        </div>
+
+    }
+
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 " id="calendar">
+
+
+    </div>
+</div>
+
+

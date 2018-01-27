@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HesiraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="Id_Address" />
+          </Key>
+          <Property Name="Id_Address" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Country" Type="int" Nullable="false" />
+          <Property Name="PhysicalAddress" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Appointments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="Trace" Type="nvarchar(max)" />
+          <Property Name="Id_Prescription" Type="bigint" />
+          <Property Name="Id_Patient" Type="bigint" Nullable="false" />
+          <Property Name="Id_Doctor" Type="bigint" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConsultationRooms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="CUI" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CAS" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Approved" Type="bit" Nullable="false" />
+          <Property Name="Decision" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Current" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumericalCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CountryNameLowerCase" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryNameUpperCase" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ISO_ALPHA3" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="ISO_ALPHA2" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diseases">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Drugs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GeneralName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComercialName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Vendor" Type="nvarchar(max)" />
+          <Property Name="OriginCountry" Type="nvarchar(max)" />
+          <Property Name="PresentationForm" Type="nvarchar(max)" />
+          <Property Name="ReductionClass" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DrugsDiseases">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Disease" Type="int" Nullable="false" />
+          <Property Name="Id_Drug" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id_Appointment" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prescriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Series" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Number" Type="bigint" Nullable="false" />
+          <Property Name="Id_Patient" Type="bigint" Nullable="false" />
+          <Property Name="PrescriptionDate" Type="date" Nullable="false" />
+          <Property Name="Id_Doctor" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrescriptionsDrugs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id_Prescription" Type="bigint" Nullable="false" />
+          <Property Name="Id_Drug" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Days" Type="int" Nullable="false" />
+          <Property Name="Id_Disease" Type="int" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsDoctor" Type="bit" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="SidebarMode" Type="bit" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="CNP" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="IsPatient" Type="bit" Nullable="false" />
+          <Property Name="LastAuthDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UsersProfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_User" Type="bigint" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Id_Address" Type="bigint" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="LastVisitDate" Type="date" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="Profession" Type="nvarchar(max)" />
+          <Property Name="Id_Citizenship" Type="int" Nullable="false" />
+          <Property Name="Id_State" Type="int" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersStates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="AppointmentFileList">
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="1" />
+          <End Role="Files" Type="Self.Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="Id_Appointment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AppointmentPrescription">
+          <End Role="Prescriptions" Type="Self.Prescriptions" Multiplicity="0..1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prescriptions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="Id_Prescription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AppointmentsForDoctor">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="Id_Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AppointmentsForPatient">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="Id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="Id_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DiseasesList">
+          <End Role="Diseases" Type="Self.Diseases" Multiplicity="1" />
+          <End Role="DrugsDiseases" Type="Self.DrugsDiseases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diseases">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DrugsDiseases">
+              <PropertyRef Name="Id_Disease" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DrugDiseasesList">
+          <End Role="Drugs" Type="Self.Drugs" Multiplicity="1" />
+          <End Role="DrugsDiseases" Type="Self.DrugsDiseases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drugs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DrugsDiseases">
+              <PropertyRef Name="Id_Drug" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DrugPrescriptionDiseasesList">
+          <End Role="Diseases" Type="Self.Diseases" Multiplicity="1" />
+          <End Role="PrescriptionsDrugs" Type="Self.PrescriptionsDrugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diseases">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrescriptionsDrugs">
+              <PropertyRef Name="Id_Disease" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrescriptionDrugList">
+          <End Role="Drugs" Type="Self.Drugs" Multiplicity="1" />
+          <End Role="PrescriptionsDrugs" Type="Self.PrescriptionsDrugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drugs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrescriptionsDrugs">
+              <PropertyRef Name="Id_Drug" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrescriptionsDrugsPrescription">
+          <End Role="Prescriptions" Type="Self.Prescriptions" Multiplicity="1" />
+          <End Role="PrescriptionsDrugs" Type="Self.PrescriptionsDrugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prescriptions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrescriptionsDrugs">
+              <PropertyRef Name="Id_Prescription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrescriptionsListForDoctor">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Prescriptions" Type="Self.Prescriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prescriptions">
+              <PropertyRef Name="Id_Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrescriptionsListForPatient">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Prescriptions" Type="Self.Prescriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prescriptions">
+              <PropertyRef Name="Id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfileAddress">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="0..1" />
+          <End Role="UsersProfiles" Type="Self.UsersProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id_Address" />
+            </Principal>
+            <Dependent Role="UsersProfiles">
+              <PropertyRef Name="Id_Address" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfileCitizenship">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="UsersProfiles" Type="Self.UsersProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersProfiles">
+              <PropertyRef Name="Id_Citizenship" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfilesList">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UsersProfiles" Type="Self.UsersProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersProfiles">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfileState">
+          <End Role="UsersStates" Type="Self.UsersStates" Multiplicity="0..1" />
+          <End Role="UsersProfiles" Type="Self.UsersProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersStates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersProfiles">
+              <PropertyRef Name="Id_State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HesiraModelStoreContainer">
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConsultationRooms" EntityType="Self.ConsultationRooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diseases" EntityType="Self.Diseases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drugs" EntityType="Self.Drugs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DrugsDiseases" EntityType="Self.DrugsDiseases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prescriptions" EntityType="Self.Prescriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrescriptionsDrugs" EntityType="Self.PrescriptionsDrugs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersProfiles" EntityType="Self.UsersProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersStates" EntityType="Self.UsersStates" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="AppointmentFileList" Association="Self.AppointmentFileList">
+            <End Role="Appointments" EntitySet="Appointments" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="AppointmentPrescription" Association="Self.AppointmentPrescription">
+            <End Role="Prescriptions" EntitySet="Prescriptions" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="AppointmentsForDoctor" Association="Self.AppointmentsForDoctor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="AppointmentsForPatient" Association="Self.AppointmentsForPatient">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="Country" Association="Self.Country">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="DiseasesList" Association="Self.DiseasesList">
+            <End Role="Diseases" EntitySet="Diseases" />
+            <End Role="DrugsDiseases" EntitySet="DrugsDiseases" />
+          </AssociationSet>
+          <AssociationSet Name="DrugDiseasesList" Association="Self.DrugDiseasesList">
+            <End Role="Drugs" EntitySet="Drugs" />
+            <End Role="DrugsDiseases" EntitySet="DrugsDiseases" />
+          </AssociationSet>
+          <AssociationSet Name="DrugPrescriptionDiseasesList" Association="Self.DrugPrescriptionDiseasesList">
+            <End Role="Diseases" EntitySet="Diseases" />
+            <End Role="PrescriptionsDrugs" EntitySet="PrescriptionsDrugs" />
+          </AssociationSet>
+          <AssociationSet Name="PrescriptionDrugList" Association="Self.PrescriptionDrugList">
+            <End Role="Drugs" EntitySet="Drugs" />
+            <End Role="PrescriptionsDrugs" EntitySet="PrescriptionsDrugs" />
+          </AssociationSet>
+          <AssociationSet Name="PrescriptionsDrugsPrescription" Association="Self.PrescriptionsDrugsPrescription">
+            <End Role="Prescriptions" EntitySet="Prescriptions" />
+            <End Role="PrescriptionsDrugs" EntitySet="PrescriptionsDrugs" />
+          </AssociationSet>
+          <AssociationSet Name="PrescriptionsListForDoctor" Association="Self.PrescriptionsListForDoctor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Prescriptions" EntitySet="Prescriptions" />
+          </AssociationSet>
+          <AssociationSet Name="PrescriptionsListForPatient" Association="Self.PrescriptionsListForPatient">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Prescriptions" EntitySet="Prescriptions" />
+          </AssociationSet>
+          <AssociationSet Name="ProfileAddress" Association="Self.ProfileAddress">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="UsersProfiles" EntitySet="UsersProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="ProfileCitizenship" Association="Self.ProfileCitizenship">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="UsersProfiles" EntitySet="UsersProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="ProfilesList" Association="Self.ProfilesList">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersProfiles" EntitySet="UsersProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="ProfileState" Association="Self.ProfileState">
+            <End Role="UsersStates" EntitySet="UsersStates" />
+            <End Role="UsersProfiles" EntitySet="UsersProfiles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HesiraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HesiraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="HesiraModel.Address" />
+          <EntitySet Name="ConsultationRooms" EntityType="HesiraModel.ConsultationRoom" />
+          <EntitySet Name="Countries" EntityType="HesiraModel.Country" />
+          <EntitySet Name="Diseases" EntityType="HesiraModel.Disease" />
+          <EntitySet Name="Drugs" EntityType="HesiraModel.Drug" />
+          <EntitySet Name="DrugsDiseases" EntityType="HesiraModel.DrugsDiseas" />
+          <EntitySet Name="Files" EntityType="HesiraModel.File" />
+          <EntitySet Name="Users" EntityType="HesiraModel.User" />
+          <EntitySet Name="UsersProfiles" EntityType="HesiraModel.UsersProfile" />
+          <EntitySet Name="UsersStates" EntityType="HesiraModel.UsersState" />
+          <AssociationSet Name="Country1" Association="HesiraModel.Country1">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="ProfileAddress" Association="HesiraModel.ProfileAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="UsersProfile" EntitySet="UsersProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="ProfileCitizenship" Association="HesiraModel.ProfileCitizenship">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="UsersProfile" EntitySet="UsersProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="DiseasesList" Association="HesiraModel.DiseasesList">
+            <End Role="Disease" EntitySet="Diseases" />
+            <End Role="DrugsDiseas" EntitySet="DrugsDiseases" />
+          </AssociationSet>
+          <AssociationSet Name="DrugDiseasesList" Association="HesiraModel.DrugDiseasesList">
+            <End Role="Drug" EntitySet="Drugs" />
+            <End Role="DrugsDiseas" EntitySet="DrugsDiseases" />
+          </AssociationSet>
+          <AssociationSet Name="ProfilesList" Association="HesiraModel.ProfilesList">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UsersProfile" EntitySet="UsersProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="ProfileState" Association="HesiraModel.ProfileState">
+            <End Role="UsersState" EntitySet="UsersStates" />
+            <End Role="UsersProfile" EntitySet="UsersProfiles" />
+          </AssociationSet>
+          <EntitySet Name="Appointments" EntityType="HesiraModel.Appointment" />
+          <AssociationSet Name="AppointmentFileList" Association="HesiraModel.AppointmentFileList">
+            <End Role="Appointment" EntitySet="Appointments" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="AppointmentsForDoctor" Association="HesiraModel.AppointmentsForDoctor">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="AppointmentsForPatient" Association="HesiraModel.AppointmentsForPatient">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <EntitySet Name="Prescriptions" EntityType="HesiraModel.Prescription" />
+          <AssociationSet Name="AppointmentPrescription" Association="HesiraModel.AppointmentPrescription">
+            <End Role="Prescription" EntitySet="Prescriptions" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="PrescriptionsListForDoctor" Association="HesiraModel.PrescriptionsListForDoctor">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Prescription" EntitySet="Prescriptions" />
+          </AssociationSet>
+          <AssociationSet Name="PrescriptionsListForPatient" Association="HesiraModel.PrescriptionsListForPatient">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Prescription" EntitySet="Prescriptions" />
+          </AssociationSet>
+          <EntitySet Name="PrescriptionsDrugs" EntityType="HesiraModel.PrescriptionsDrug" />
+          <AssociationSet Name="DrugPrescriptionDiseasesList" Association="HesiraModel.DrugPrescriptionDiseasesList">
+            <End Role="Disease" EntitySet="Diseases" />
+            <End Role="PrescriptionsDrug" EntitySet="PrescriptionsDrugs" />
+          </AssociationSet>
+          <AssociationSet Name="PrescriptionDrugList" Association="HesiraModel.PrescriptionDrugList">
+            <End Role="Drug" EntitySet="Drugs" />
+            <End Role="PrescriptionsDrug" EntitySet="PrescriptionsDrugs" />
+          </AssociationSet>
+          <AssociationSet Name="PrescriptionsDrugsPrescription" Association="HesiraModel.PrescriptionsDrugsPrescription">
+            <End Role="Prescription" EntitySet="Prescriptions" />
+            <End Role="PrescriptionsDrug" EntitySet="PrescriptionsDrugs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id_Address" />
+          </Key>
+          <Property Name="Id_Address" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Country" Type="Int32" Nullable="false" />
+          <Property Name="PhysicalAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="HesiraModel.Country1" FromRole="Address" ToRole="Country" />
+          <NavigationProperty Name="UsersProfiles" Relationship="HesiraModel.ProfileAddress" FromRole="Address" ToRole="UsersProfile" />
+        </EntityType>
+        <EntityType Name="ConsultationRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="CUI" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CAS" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Approved" Type="Boolean" Nullable="false" />
+          <Property Name="Decision" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Current" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumericalCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="CountryNameLowerCase" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNameUpperCase" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISO_ALPHA3" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="ISO_ALPHA2" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Addresses" Relationship="HesiraModel.Country1" FromRole="Country" ToRole="Address" />
+          <NavigationProperty Name="UsersProfiles" Relationship="HesiraModel.ProfileCitizenship" FromRole="Country" ToRole="UsersProfile" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DrugsDiseases" Relationship="HesiraModel.DiseasesList" FromRole="Disease" ToRole="DrugsDiseas" />
+          <NavigationProperty Name="PrescriptionsDrugs" Relationship="HesiraModel.DrugPrescriptionDiseasesList" FromRole="Disease" ToRole="PrescriptionsDrug" />
+        </EntityType>
+        <EntityType Name="Drug">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GeneralName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComercialName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vendor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OriginCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PresentationForm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReductionClass" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DrugsDiseases" Relationship="HesiraModel.DrugDiseasesList" FromRole="Drug" ToRole="DrugsDiseas" />
+          <NavigationProperty Name="PrescriptionsDrugs" Relationship="HesiraModel.PrescriptionDrugList" FromRole="Drug" ToRole="PrescriptionsDrug" />
+        </EntityType>
+        <EntityType Name="DrugsDiseas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Disease" Type="Int32" Nullable="false" />
+          <Property Name="Id_Drug" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Disease" Relationship="HesiraModel.DiseasesList" FromRole="DrugsDiseas" ToRole="Disease" />
+          <NavigationProperty Name="Drug" Relationship="HesiraModel.DrugDiseasesList" FromRole="DrugsDiseas" ToRole="Drug" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Appointment" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Appointment" Relationship="HesiraModel.AppointmentFileList" FromRole="File" ToRole="Appointment" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDoctor" Type="Boolean" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SidebarMode" Type="Boolean" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CNP" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="IsPatient" Type="Boolean" Nullable="false" />
+          <Property Name="LastAuthDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UsersProfiles" Relationship="HesiraModel.ProfilesList" FromRole="User" ToRole="UsersProfile" />
+          <NavigationProperty Name="AppointmentsListForDoctor" Relationship="HesiraModel.AppointmentsForDoctor" FromRole="User" ToRole="Appointment" />
+          <NavigationProperty Name="AppointmentsListForPatient" Relationship="HesiraModel.AppointmentsForPatient" FromRole="User" ToRole="Appointment" />
+          <NavigationProperty Name="PrescriptionsListForDoctor" Relationship="HesiraModel.PrescriptionsListForDoctor" FromRole="User" ToRole="Prescription" />
+          <NavigationProperty Name="PrescriptionsListForPatient" Relationship="HesiraModel.PrescriptionsListForPatient" FromRole="User" ToRole="Prescription" />
+        </EntityType>
+        <EntityType Name="UsersProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_User" Type="Int64" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_Address" Type="Int64" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastVisitDate" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Citizenship" Type="Int32" Nullable="false" />
+          <Property Name="Id_State" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Address" Relationship="HesiraModel.ProfileAddress" FromRole="UsersProfile" ToRole="Address" />
+          <NavigationProperty Name="Country" Relationship="HesiraModel.ProfileCitizenship" FromRole="UsersProfile" ToRole="Country" />
+          <NavigationProperty Name="User" Relationship="HesiraModel.ProfilesList" FromRole="UsersProfile" ToRole="User" />
+          <NavigationProperty Name="UsersState" Relationship="HesiraModel.ProfileState" FromRole="UsersProfile" ToRole="UsersState" />
+        </EntityType>
+        <EntityType Name="UsersState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UsersProfiles" Relationship="HesiraModel.ProfileState" FromRole="UsersState" ToRole="UsersProfile" />
+        </EntityType>
+        <Association Name="Country1">
+          <End Type="HesiraModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="HesiraModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Id_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfileAddress">
+          <End Type="HesiraModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="HesiraModel.UsersProfile" Role="UsersProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id_Address" />
+            </Principal>
+            <Dependent Role="UsersProfile">
+              <PropertyRef Name="Id_Address" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfileCitizenship">
+          <End Type="HesiraModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="HesiraModel.UsersProfile" Role="UsersProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersProfile">
+              <PropertyRef Name="Id_Citizenship" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DiseasesList">
+          <End Type="HesiraModel.Disease" Role="Disease" Multiplicity="1" />
+          <End Type="HesiraModel.DrugsDiseas" Role="DrugsDiseas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DrugsDiseas">
+              <PropertyRef Name="Id_Disease" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DrugDiseasesList">
+          <End Type="HesiraModel.Drug" Role="Drug" Multiplicity="1" />
+          <End Type="HesiraModel.DrugsDiseas" Role="DrugsDiseas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drug">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DrugsDiseas">
+              <PropertyRef Name="Id_Drug" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfilesList">
+          <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+          <End Type="HesiraModel.UsersProfile" Role="UsersProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersProfile">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfileState">
+          <End Type="HesiraModel.UsersState" Role="UsersState" Multiplicity="0..1" />
+          <End Type="HesiraModel.UsersProfile" Role="UsersProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersProfile">
+              <PropertyRef Name="Id_State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Trace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Prescription" Type="Int64" />
+          <Property Name="Id_Patient" Type="Int64" Nullable="false" />
+          <Property Name="Id_Doctor" Type="Int64" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Files" Relationship="HesiraModel.AppointmentFileList" FromRole="Appointment" ToRole="File" />
+          <NavigationProperty Name="AppointmentDoctor" Relationship="HesiraModel.AppointmentsForDoctor" FromRole="Appointment" ToRole="User" />
+          <NavigationProperty Name="AppointmentPatient" Relationship="HesiraModel.AppointmentsForPatient" FromRole="Appointment" ToRole="User" />
+          <NavigationProperty Name="Prescription" Relationship="HesiraModel.AppointmentPrescription" FromRole="Appointment" ToRole="Prescription" />
+        </EntityType>
+        <Association Name="AppointmentFileList">
+          <End Type="HesiraModel.Appointment" Role="Appointment" Multiplicity="1" />
+          <End Type="HesiraModel.File" Role="File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="File">
+              <PropertyRef Name="Id_Appointment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AppointmentsForDoctor">
+          <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+          <End Type="HesiraModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AppointmentsForPatient">
+          <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+          <End Type="HesiraModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Prescription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Series" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="Int64" Nullable="false" />
+          <Property Name="Id_Patient" Type="Int64" Nullable="false" />
+          <Property Name="PrescriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_Doctor" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="HesiraModel.AppointmentPrescription" FromRole="Prescription" ToRole="Appointment" />
+          <NavigationProperty Name="PrescriptionsDoctor" Relationship="HesiraModel.PrescriptionsListForDoctor" FromRole="Prescription" ToRole="User" />
+          <NavigationProperty Name="PrescriptionsPatient" Relationship="HesiraModel.PrescriptionsListForPatient" FromRole="Prescription" ToRole="User" />
+          <NavigationProperty Name="PrescriptionsDrugs" Relationship="HesiraModel.PrescriptionsDrugsPrescription" FromRole="Prescription" ToRole="PrescriptionsDrug" />
+        </EntityType>
+        <Association Name="AppointmentPrescription">
+          <End Type="HesiraModel.Prescription" Role="Prescription" Multiplicity="0..1" />
+          <End Type="HesiraModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prescription">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_Prescription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrescriptionsListForDoctor">
+          <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+          <End Type="HesiraModel.Prescription" Role="Prescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prescription">
+              <PropertyRef Name="Id_Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrescriptionsListForPatient">
+          <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+          <End Type="HesiraModel.Prescription" Role="Prescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prescription">
+              <PropertyRef Name="Id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PrescriptionsDrug">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id_Prescription" Type="Int64" Nullable="false" />
+          <Property Name="Id_Drug" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Days" Type="Int32" Nullable="false" />
+          <Property Name="Id_Disease" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Disease" Relationship="HesiraModel.DrugPrescriptionDiseasesList" FromRole="PrescriptionsDrug" ToRole="Disease" />
+          <NavigationProperty Name="Drug" Relationship="HesiraModel.PrescriptionDrugList" FromRole="PrescriptionsDrug" ToRole="Drug" />
+          <NavigationProperty Name="Prescription" Relationship="HesiraModel.PrescriptionsDrugsPrescription" FromRole="PrescriptionsDrug" ToRole="Prescription" />
+        </EntityType>
+        <Association Name="DrugPrescriptionDiseasesList">
+          <End Type="HesiraModel.Disease" Role="Disease" Multiplicity="1" />
+          <End Type="HesiraModel.PrescriptionsDrug" Role="PrescriptionsDrug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrescriptionsDrug">
+              <PropertyRef Name="Id_Disease" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrescriptionDrugList">
+          <End Type="HesiraModel.Drug" Role="Drug" Multiplicity="1" />
+          <End Type="HesiraModel.PrescriptionsDrug" Role="PrescriptionsDrug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drug">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrescriptionsDrug">
+              <PropertyRef Name="Id_Drug" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrescriptionsDrugsPrescription">
+          <End Type="HesiraModel.Prescription" Role="Prescription" Multiplicity="1" />
+          <End Type="HesiraModel.PrescriptionsDrug" Role="PrescriptionsDrug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prescription">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrescriptionsDrug">
+              <PropertyRef Name="Id_Prescription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HesiraModelStoreContainer" CdmEntityContainer="HesiraEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="HesiraModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="PhysicalAddress" ColumnName="PhysicalAddress" />
+                <ScalarProperty Name="Id_Country" ColumnName="Id_Country" />
+                <ScalarProperty Name="Id_Address" ColumnName="Id_Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsultationRooms">
+            <EntityTypeMapping TypeName="HesiraModel.ConsultationRoom">
+              <MappingFragment StoreEntitySet="ConsultationRooms">
+                <ScalarProperty Name="Current" ColumnName="Current" />
+                <ScalarProperty Name="Decision" ColumnName="Decision" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="CAS" ColumnName="CAS" />
+                <ScalarProperty Name="CUI" ColumnName="CUI" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="HesiraModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="ISO_ALPHA2" ColumnName="ISO_ALPHA2" />
+                <ScalarProperty Name="ISO_ALPHA3" ColumnName="ISO_ALPHA3" />
+                <ScalarProperty Name="CountryNameUpperCase" ColumnName="CountryNameUpperCase" />
+                <ScalarProperty Name="CountryNameLowerCase" ColumnName="CountryNameLowerCase" />
+                <ScalarProperty Name="NumericalCode" ColumnName="NumericalCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diseases">
+            <EntityTypeMapping TypeName="HesiraModel.Disease">
+              <MappingFragment StoreEntitySet="Diseases">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drugs">
+            <EntityTypeMapping TypeName="HesiraModel.Drug">
+              <MappingFragment StoreEntitySet="Drugs">
+                <ScalarProperty Name="ReductionClass" ColumnName="ReductionClass" />
+                <ScalarProperty Name="PresentationForm" ColumnName="PresentationForm" />
+                <ScalarProperty Name="OriginCountry" ColumnName="OriginCountry" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="ComercialName" ColumnName="ComercialName" />
+                <ScalarProperty Name="GeneralName" ColumnName="GeneralName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DrugsDiseases">
+            <EntityTypeMapping TypeName="HesiraModel.DrugsDiseas">
+              <MappingFragment StoreEntitySet="DrugsDiseases">
+                <ScalarProperty Name="Id_Drug" ColumnName="Id_Drug" />
+                <ScalarProperty Name="Id_Disease" ColumnName="Id_Disease" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="HesiraModel.File">
+              <MappingFragment StoreEntitySet="Files">
+                <ScalarProperty Name="Id_Appointment" ColumnName="Id_Appointment" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HesiraModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="LastAuthDate" ColumnName="LastAuthDate" />
+                <ScalarProperty Name="IsPatient" ColumnName="IsPatient" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="CNP" ColumnName="CNP" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="SidebarMode" ColumnName="SidebarMode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="IsDoctor" ColumnName="IsDoctor" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersProfiles">
+            <EntityTypeMapping TypeName="HesiraModel.UsersProfile">
+              <MappingFragment StoreEntitySet="UsersProfiles">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Id_State" ColumnName="Id_State" />
+                <ScalarProperty Name="Id_Citizenship" ColumnName="Id_Citizenship" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastVisitDate" ColumnName="LastVisitDate" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Id_Address" ColumnName="Id_Address" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersStates">
+            <EntityTypeMapping TypeName="HesiraModel.UsersState">
+              <MappingFragment StoreEntitySet="UsersStates">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="HesiraModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointments">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Id_Doctor" ColumnName="Id_Doctor" />
+                <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
+                <ScalarProperty Name="Id_Prescription" ColumnName="Id_Prescription" />
+                <ScalarProperty Name="Trace" ColumnName="Trace" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prescriptions">
+            <EntityTypeMapping TypeName="HesiraModel.Prescription">
+              <MappingFragment StoreEntitySet="Prescriptions">
+                <ScalarProperty Name="Id_Doctor" ColumnName="Id_Doctor" />
+                <ScalarProperty Name="PrescriptionDate" ColumnName="PrescriptionDate" />
+                <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrescriptionsDrugs">
+            <EntityTypeMapping TypeName="HesiraModel.PrescriptionsDrug">
+              <MappingFragment StoreEntitySet="PrescriptionsDrugs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Disease" ColumnName="Id_Disease" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Id_Drug" ColumnName="Id_Drug" />
+                <ScalarProperty Name="Id_Prescription" ColumnName="Id_Prescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

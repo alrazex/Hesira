@@ -1,0 +1,24 @@
+﻿@using BForms.Html
+@using BForms.Models
+@model Hesira.Areas.Doctor.Models.DrugRowFormModel
+
+@using (Html.BsBeginForm(BsTheme.Purple))
+{
+    <div class="col-lg-12 col-md-12 col-sm-12  form-group @Html.BsValidationCssFor(m => m.NumberOfDays)">
+        @Html.BsLabelFor(m => m.NumberOfDays)
+        <div class="input-group">
+            @Html.BsInputFor(m => m.NumberOfDays)
+            @Html.BsValidationFor(m => m.NumberOfDays)
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+ <div class="col-lg-12 col-md-12 col-sm-12  form-group @Html.BsValidationCssFor(m => m.Quantity)">
+        @Html.BsLabelFor(m => m.Quantity)
+        <div class="input-group">
+            @Html.BsInputFor(m => m.Quantity)
+            @Html.BsValidationFor(m => m.Quantity)
+        </div>
+    </div>
+}

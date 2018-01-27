@@ -1,0 +1,103 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hesira", "Hesira\Hesira.csproj", "{4BC1311C-9D12-46DE-8A0F-53DD4B120869}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D46E00CA-FB5E-4426-BD77-B054C1ADFC29}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{280A6DEB-9B2F-4363-AE38-2A3F1237D3A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hesira.Entities", "Entities\Hesira.Entities.csproj", "{4B976AC3-48DC-4568-BB5F-71F1ADB505D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{1587284C-A04D-463D-B5FD-BA3CDB533958}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{AD803A81-0867-4547-BF58-88D17858F602}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hesira.Repositories", "Hesira.Repositories\Hesira.Repositories.csproj", "{48F5DA37-D091-4F8E-9A2E-0A6BAC43A5CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hesira.Models", "Hesira.Models\Hesira.Models.csproj", "{BFEA3C1D-C1AB-45C0-8ABE-300E90DF30E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hesira.Common", "Hesira.Common\Hesira.Common.csproj", "{098D2543-D0AC-465F-86AC-1E64FAC01D68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hesira.Services", "Hesira.Services\Hesira.Services.csproj", "{D422167F-D7C5-454D-862C-3EFD01345583}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://razvandumitru.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Hesira\\Hesira.csproj
+		SccProjectTopLevelParentUniqueName1 = Hesira.sln
+		SccProjectName1 = Hesira
+		SccLocalPath1 = Hesira
+		SccProjectUniqueName2 = Entities\\Hesira.Entities.csproj
+		SccProjectTopLevelParentUniqueName2 = Hesira.sln
+		SccProjectName2 = Entities
+		SccLocalPath2 = Entities
+		SccProjectUniqueName3 = Hesira.Repositories\\Hesira.Repositories.csproj
+		SccProjectTopLevelParentUniqueName3 = Hesira.sln
+		SccProjectName3 = Hesira.Repositories
+		SccLocalPath3 = Hesira.Repositories
+		SccProjectUniqueName4 = Hesira.Models\\Hesira.Models.csproj
+		SccProjectTopLevelParentUniqueName4 = Hesira.sln
+		SccProjectName4 = Hesira.Models
+		SccLocalPath4 = Hesira.Models
+		SccProjectUniqueName5 = Hesira.Common\\Hesira.Common.csproj
+		SccProjectTopLevelParentUniqueName5 = Hesira.sln
+		SccProjectName5 = Hesira.Common
+		SccLocalPath5 = Hesira.Common
+		SccProjectUniqueName6 = Hesira.Services\\Hesira.Services.csproj
+		SccProjectTopLevelParentUniqueName6 = Hesira.sln
+		SccProjectName6 = Hesira.Services
+		SccLocalPath6 = Hesira.Services
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BC1311C-9D12-46DE-8A0F-53DD4B120869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC1311C-9D12-46DE-8A0F-53DD4B120869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC1311C-9D12-46DE-8A0F-53DD4B120869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC1311C-9D12-46DE-8A0F-53DD4B120869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B976AC3-48DC-4568-BB5F-71F1ADB505D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B976AC3-48DC-4568-BB5F-71F1ADB505D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B976AC3-48DC-4568-BB5F-71F1ADB505D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B976AC3-48DC-4568-BB5F-71F1ADB505D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F5DA37-D091-4F8E-9A2E-0A6BAC43A5CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F5DA37-D091-4F8E-9A2E-0A6BAC43A5CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F5DA37-D091-4F8E-9A2E-0A6BAC43A5CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F5DA37-D091-4F8E-9A2E-0A6BAC43A5CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEA3C1D-C1AB-45C0-8ABE-300E90DF30E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEA3C1D-C1AB-45C0-8ABE-300E90DF30E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEA3C1D-C1AB-45C0-8ABE-300E90DF30E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEA3C1D-C1AB-45C0-8ABE-300E90DF30E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{098D2543-D0AC-465F-86AC-1E64FAC01D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{098D2543-D0AC-465F-86AC-1E64FAC01D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{098D2543-D0AC-465F-86AC-1E64FAC01D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{098D2543-D0AC-465F-86AC-1E64FAC01D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D422167F-D7C5-454D-862C-3EFD01345583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D422167F-D7C5-454D-862C-3EFD01345583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D422167F-D7C5-454D-862C-3EFD01345583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D422167F-D7C5-454D-862C-3EFD01345583}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4BC1311C-9D12-46DE-8A0F-53DD4B120869} = {1587284C-A04D-463D-B5FD-BA3CDB533958}
+		{4B976AC3-48DC-4568-BB5F-71F1ADB505D6} = {280A6DEB-9B2F-4363-AE38-2A3F1237D3A3}
+		{48F5DA37-D091-4F8E-9A2E-0A6BAC43A5CE} = {AD803A81-0867-4547-BF58-88D17858F602}
+		{BFEA3C1D-C1AB-45C0-8ABE-300E90DF30E9} = {AD803A81-0867-4547-BF58-88D17858F602}
+		{098D2543-D0AC-465F-86AC-1E64FAC01D68} = {AD803A81-0867-4547-BF58-88D17858F602}
+		{D422167F-D7C5-454D-862C-3EFD01345583} = {AD803A81-0867-4547-BF58-88D17858F602}
+	EndGlobalSection
+EndGlobal

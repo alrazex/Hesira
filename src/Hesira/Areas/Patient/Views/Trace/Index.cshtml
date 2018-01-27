@@ -1,0 +1,80 @@
+﻿@using Hesira.Resources
+
+@{
+    ViewBag.Title = "Hesira | " + Resource.Patient + " | " + Resource.MedicalTrace;
+    ViewBag.ContentHeader = Resource.MedicalTrace;
+    ViewBag.ContentHeaderSmall = "";
+    Layout = "~/Areas/Common/Views/Shared/_Layout.cshtml";
+}
+
+@model Hesira.Areas.Patient.Models.TracePageModel
+
+<div class="row">
+    <div class="col-md-12">
+        @if (Model.AppointmentsTrace.Any())
+        {
+            <ul class="timeline">
+
+                @foreach (var appointmentTrace in Model.AppointmentsTrace)
+                {
+
+                    <li class="time-label">
+                        <span class="bg-red">
+                            @appointmentTrace.StartDate.ToShortDateString()
+                        </span>
+                    </li>
+                    <li>
+                        <i class="fa fa-medkit bg-purple"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-clock-o"></i>@(" " + appointmentTrace.StartDateString + " - " + appointmentTrace.EndDateString)</span>
+                            <h3 class="timeline-header"><a href=@Url.Action("Index", "Profile", new {area = "Patient", userId = appointmentTrace.DoctorId})>@appointmentTrace.DoctorName</a></h3>
+                            <div class="timeline-body">
+                                @if (!string.IsNullOrEmpty(appointmentTrace.Disease))
+                                {
+                                    <div>
+                                        @Resource.Disease: @appointmentTrace.Disease
+                                    </div>
+                                }
+
+                                @if (!string.IsNullOrEmpty(appointmentTrace.MedicalTrace))
+                                {
+                                    <div>
+                                        @Resource.MedicalTrace: @appointmentTrace.MedicalTrace
+                                    </div>
+                                }
+
+                                <div>
+                                    @Resource.Prescription: @(appointmentTrace.PrescriptionSeries + " - " + Resource.Number.ToLower() + " " + appointmentTrace.PrescriptionNumber)
+                                </div>
+                                <ul>
+                                    @foreach (var drug in appointmentTrace.AssociatedDrugDisease)
+                                    {
+                                        <li>
+                                            @(drug.DrugModel.CommercialName + " - " + drug.Quantity + " " + Resource.In.ToLower() + " " + drug.Days + " " + Resource.Days.ToLower())
+                                        </li>
+                                    }
+                                </ul>
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                }
+
+                <!-- END timeline item -->
+                <li>
+                    <i class="fa fa-clock-o"></i>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <div class="alert-info alert">@Resource.NoRecords</div>
+        }
+
+
+
+
+    </div>
+</div>

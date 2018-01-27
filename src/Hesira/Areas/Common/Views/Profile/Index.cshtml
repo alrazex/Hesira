@@ -1,0 +1,43 @@
+﻿@using BForms.Html
+@using BForms.Panels
+@using BForms.Renderers
+@using Hesira.Helpers.General
+@using Hesira.Resources
+@model Hesira.Areas.Common.Models.UserProfileModel
+
+@{
+    ViewBag.Title = "Hesira | " + Resource.Profile;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var userData = Session["UserData"] as UserData;
+
+    var isEditable = userData.Id == Model.Basic.Id;
+
+}
+
+
+<div class="row">
+    @(Html.BsPanelsFor(Model).ConfigurePanels(cfg =>
+        {
+            cfg.Renderer<BsPanelBaseRenderer>();
+
+            cfg.GetReadonlyUrl = Url.Action("GetReadonlyContent");
+            cfg.GetEditableUrl = Url.Action("GetEditableContent");
+            cfg.UpdateUrl = Url.Action("SetContent");
+
+            cfg.For(x => x.Basic).Content(Html.Partial("Readonly/_Basic", Model.Basic).ToString())
+            .Theme(BsPanelTheme.LightBlue)
+            .Editable(false).ObjId(Model.Basic.Id);
+
+            cfg.For(x => x.UserInfo).Content(Html.Partial("Readonly/_UserInfo", Model.UserInfo).ToString())
+            .HtmlAttributes(new { @class = "js-userInfo" })
+            .Theme(BsPanelTheme.LightBlue)
+            .Editable(isEditable).ObjId(Model.Basic.Id);
+
+            cfg.For(x => x.Contact)
+            .Content(Html.Partial("Readonly/_Contact", Model.Contact).ToString())
+            .HtmlAttributes(new { @class = "js-contact" })
+            .Theme(BsPanelTheme.LightBlue)
+            .Editable(isEditable).ObjId(Model.Basic.Id);
+        }))
+</div>

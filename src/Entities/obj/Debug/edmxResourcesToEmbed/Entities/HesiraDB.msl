@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HesiraModelStoreContainer" CdmEntityContainer="HesiraEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="HesiraModel.Address">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="PhysicalAddress" ColumnName="PhysicalAddress" />
+          <ScalarProperty Name="Id_Country" ColumnName="Id_Country" />
+          <ScalarProperty Name="Id_Address" ColumnName="Id_Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsultationRooms">
+      <EntityTypeMapping TypeName="HesiraModel.ConsultationRoom">
+        <MappingFragment StoreEntitySet="ConsultationRooms">
+          <ScalarProperty Name="Current" ColumnName="Current" />
+          <ScalarProperty Name="Decision" ColumnName="Decision" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+          <ScalarProperty Name="CAS" ColumnName="CAS" />
+          <ScalarProperty Name="CUI" ColumnName="CUI" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="HesiraModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="ISO_ALPHA2" ColumnName="ISO_ALPHA2" />
+          <ScalarProperty Name="ISO_ALPHA3" ColumnName="ISO_ALPHA3" />
+          <ScalarProperty Name="CountryNameUpperCase" ColumnName="CountryNameUpperCase" />
+          <ScalarProperty Name="CountryNameLowerCase" ColumnName="CountryNameLowerCase" />
+          <ScalarProperty Name="NumericalCode" ColumnName="NumericalCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diseases">
+      <EntityTypeMapping TypeName="HesiraModel.Disease">
+        <MappingFragment StoreEntitySet="Diseases">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drugs">
+      <EntityTypeMapping TypeName="HesiraModel.Drug">
+        <MappingFragment StoreEntitySet="Drugs">
+          <ScalarProperty Name="ReductionClass" ColumnName="ReductionClass" />
+          <ScalarProperty Name="PresentationForm" ColumnName="PresentationForm" />
+          <ScalarProperty Name="OriginCountry" ColumnName="OriginCountry" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="ComercialName" ColumnName="ComercialName" />
+          <ScalarProperty Name="GeneralName" ColumnName="GeneralName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DrugsDiseases">
+      <EntityTypeMapping TypeName="HesiraModel.DrugsDiseas">
+        <MappingFragment StoreEntitySet="DrugsDiseases">
+          <ScalarProperty Name="Id_Drug" ColumnName="Id_Drug" />
+          <ScalarProperty Name="Id_Disease" ColumnName="Id_Disease" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="HesiraModel.File">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id_Appointment" ColumnName="Id_Appointment" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="HesiraModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="LastAuthDate" ColumnName="LastAuthDate" />
+          <ScalarProperty Name="IsPatient" ColumnName="IsPatient" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="CNP" ColumnName="CNP" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="SidebarMode" ColumnName="SidebarMode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="IsDoctor" ColumnName="IsDoctor" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersProfiles">
+      <EntityTypeMapping TypeName="HesiraModel.UsersProfile">
+        <MappingFragment StoreEntitySet="UsersProfiles">
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Id_State" ColumnName="Id_State" />
+          <ScalarProperty Name="Id_Citizenship" ColumnName="Id_Citizenship" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastVisitDate" ColumnName="LastVisitDate" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Id_Address" ColumnName="Id_Address" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersStates">
+      <EntityTypeMapping TypeName="HesiraModel.UsersState">
+        <MappingFragment StoreEntitySet="UsersStates">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="HesiraModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointments">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Id_Doctor" ColumnName="Id_Doctor" />
+          <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
+          <ScalarProperty Name="Id_Prescription" ColumnName="Id_Prescription" />
+          <ScalarProperty Name="Trace" ColumnName="Trace" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescriptions">
+      <EntityTypeMapping TypeName="HesiraModel.Prescription">
+        <MappingFragment StoreEntitySet="Prescriptions">
+          <ScalarProperty Name="Id_Doctor" ColumnName="Id_Doctor" />
+          <ScalarProperty Name="PrescriptionDate" ColumnName="PrescriptionDate" />
+          <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Series" ColumnName="Series" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrescriptionsDrugs">
+      <EntityTypeMapping TypeName="HesiraModel.PrescriptionsDrug">
+        <MappingFragment StoreEntitySet="PrescriptionsDrugs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Disease" ColumnName="Id_Disease" />
+          <ScalarProperty Name="Days" ColumnName="Days" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Id_Drug" ColumnName="Id_Drug" />
+          <ScalarProperty Name="Id_Prescription" ColumnName="Id_Prescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

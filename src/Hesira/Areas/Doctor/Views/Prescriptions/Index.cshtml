@@ -1,0 +1,97 @@
+﻿@using BForms.Html
+@using BForms.Models
+@using Hesira.Helpers.General
+@model Hesira.Areas.Doctor.Models.PrescriptionsPageModel
+@using Hesira.Resources
+@{
+    ViewBag.Title = "Hesira | " + Resource.Doctor + " | " + Resource.Prescriptions;
+
+    Layout = "~/Areas/Common/Views/Shared/_Layout.cshtml";
+    ViewBag.ContentHeader = Resource.Prescriptions;
+    ViewBag.ContentHeaderSmall = "";
+}
+
+
+@if (Model.NewPrescriptionModel.Appointments != null && Model.NewPrescriptionModel.Appointments.Items.Any())
+{
+    using (Html.BsBeginForm("Create", "Prescriptions", new {}, FormMethod.Post, new {@class = "bs-form js-newPrescriptionForm"}, BsTheme.Purple))
+    {
+
+
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="panel-default panel" style="overflow: hidden">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            @Html.BsGlyphicon(Glyphicon.InfoSign) @Resource.BasicInfo
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-12 col-md-12  form-group @Html.BsValidationCssFor(m => m.NewPrescriptionModel.Appointments)">
+                            @Html.BsLabelFor(m => m.NewPrescriptionModel.Appointments)
+                            <div class="input-group">
+                                @Html.BsSelectFor(m => m.NewPrescriptionModel.Appointments)
+                                @Html.BsValidationFor(m => m.NewPrescriptionModel.Appointments)
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12  form-group @Html.BsValidationCssFor(m => m.NewPrescriptionModel.Diseases)">
+                            @Html.BsLabelFor(m => m.NewPrescriptionModel.Diseases)
+                            <div class="input-group">
+                                @Html.BsSelectFor(m => m.NewPrescriptionModel.Diseases)
+                                @Html.BsValidationFor(m => m.NewPrescriptionModel.Diseases)
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12  form-group @Html.BsValidationCssFor(m => m.NewPrescriptionModel.MedicalTrace)">
+                            @Html.BsLabelFor(m => m.NewPrescriptionModel.MedicalTrace)
+                            <div class="input-group">
+                                @Html.BsInputFor(m => m.NewPrescriptionModel.MedicalTrace)
+                                @Html.BsValidationFor(m => m.NewPrescriptionModel.MedicalTrace)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-12 form-group">
+                    <button type="submit" class="btn btn-primary hidden js-submitFirstForm">@Resource.Save</button>
+                    <a class="btn btn-danger hidden pull-right" type="button">@Resource.Reset</a>
+                </div>
+            </div>
+
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 ">
+            <div class="panel-default panel" style="overflow: hidden">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        @Html.BsGlyphicon(Glyphicon.InfoSign) @Resource.Prescription
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    @Html.Partial("TeamBuilder/_Index", Model.NewPrescriptionModel.PrescriptionBuilderModel)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 form-group">
+            <button class="btn btn-primary js-submitAddForm  bs-savePanel">@Resource.Save</button>
+            <a class="btn btn-danger pull-right bs-cancelEdit  js-resetForm" type="button">@Resource.Reset</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        @Resource.NoAppointments
+    </div>
+}
+

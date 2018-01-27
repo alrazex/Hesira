@@ -1,0 +1,59 @@
+﻿@using BForms.Html
+@using BForms.Grid
+@using BForms.Models
+@using Hesira.Areas.Common.Models
+@using Hesira.Helpers.Html
+@using Hesira.Resources
+
+@model UsersPageModel
+
+@{
+    var builder = new BsGridHtmlBuilder<UsersPageModel, UserRowModel>().ConfigureColumns(cols =>
+      {
+
+          cols.For(row => row.Name).Name(Resource.Name)
+              .Sortable();
+
+          cols.For(row => row.Role).Name(Resource.Role)
+              .Sortable()
+              .Text(row => Html.GetRoleIcon(row.Role) + " " + Html.BsEnumDisplayName(row.Role));
+
+          cols.For(row => row.CNP).Name(Resource.CNP)
+              .Sortable();
+
+          cols.For(row => row.Email).Name(Resource.Email)
+              .Sortable();
+      });
+}
+
+@(Html.BsGridFor(m => m.Grid, builder)
+      .NoResultsTemplate("Grid/_NoResults")
+      .NoRecordsTemplate("Grid/_NoRecords")
+      .SetTheme(BsTheme.Purple)
+      .GridResetButton(Resource.Reset)
+      .ConfigureBulkActions(bulk =>
+      {
+
+          bulk.AddAction().StyleClass("btn-success js-btn-enable_selected").Title(Resource.Enable).
+          GlyphIcon(Glyphicon.Ok);
+          bulk.AddAction().StyleClass("btn-warning js-btn-disable_selected").Title(Resource.Disable).
+          GlyphIcon(Glyphicon.Remove);
+          bulk.AddAction(BsBulkActionType.Delete).Title(Resource.Delete);
+
+          bulk.AddSelector(BsBulkSelectorType.All);
+          bulk.AddSelector().StyleClass("js-actives").Text(Resource.Enabled);
+          bulk.AddSelector().StyleClass("js-inactives").Text(Resource.Disabled);
+          bulk.AddSelector(BsBulkSelectorType.None);
+
+          bulk.ForSelector(BsBulkSelectorType.All).Text(Resource.All);
+          bulk.ForSelector(BsBulkSelectorType.None).Text(Resource.None);
+
+      })
+      .ConfigureRows(cfg => cfg.HasDetails(row => false)                           
+                               .HtmlAttributes(row => new Dictionary<string, object>
+                               {
+                                   { "data-active", row.Enabled }
+                               })
+                               .Highlighter(row => row.Enabled ? "#59b444" : "#f0ad4e")
+                               .HasCheckbox(row => true))
+      .PagerSettings(new BsPagerSettings { Size = 5, HasPageSizeSelector = true, HasPagesText = true }))

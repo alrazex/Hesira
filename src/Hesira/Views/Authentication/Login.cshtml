@@ -1,0 +1,50 @@
+﻿@using BForms.Html
+@using BForms.Models
+@using Hesira.Resources
+@model Hesira.Models.LoginViewModel
+@{
+    ViewBag.Title = "Hesira | " + Resource.SignIn;
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="form-box" id="login-box">
+    <div class="header">Hesira | @Resource.SignIn </div>
+
+    @using (Html.BsBeginForm("Login", "Authentication", FormMethod.Post, new { @class = "bs-form js-loginForm" }))
+    {
+        <div class="body bg-gray">
+
+            <div class="col-lg-12 bs-validation_summary">
+                @Html.BsValidationSummary()
+            </div>
+
+            <div class="col-lg-12 form-group">
+                @Html.BsLabelFor(m => m.CNP)
+                <div class="input-group">
+                    @Html.BsGlyphiconAddon(Glyphicon.User)
+                    @Html.BsInputFor(m => m.CNP, new Dictionary<string, object> { { "class", "form-control" } })
+                    @Html.BsValidationFor(m => m.CNP)
+                </div>
+            </div>
+
+            <div class="col-lg-12 form-group">
+
+                @Html.BsLabelFor(m => m.Password)
+                <div class="input-group">
+                    @Html.BsGlyphiconAddon(Glyphicon.Lock)
+                    @Html.BsInputFor(m => m.Password, new Dictionary<string, object> { { "class", "form-control" } })
+                    @Html.BsValidationFor(m => m.Password)
+                </div>
+
+            </div>
+
+            @Html.HiddenFor(m => m.ReturnUrl)
+
+        </div>
+        <div class="col-lg-12 footer">
+            <button class="btn bg-blue btn-block" type="submit">@Html.BsGlyphicon(Glyphicon.LogIn) @Resource.SignIn</button>
+        </div>
+    }
+</div>
+
+

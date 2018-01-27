@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HesiraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HesiraEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="HesiraModel.Address" />
+    <EntitySet Name="ConsultationRooms" EntityType="HesiraModel.ConsultationRoom" />
+    <EntitySet Name="Countries" EntityType="HesiraModel.Country" />
+    <EntitySet Name="Diseases" EntityType="HesiraModel.Disease" />
+    <EntitySet Name="Drugs" EntityType="HesiraModel.Drug" />
+    <EntitySet Name="DrugsDiseases" EntityType="HesiraModel.DrugsDiseas" />
+    <EntitySet Name="Files" EntityType="HesiraModel.File" />
+    <EntitySet Name="Users" EntityType="HesiraModel.User" />
+    <EntitySet Name="UsersProfiles" EntityType="HesiraModel.UsersProfile" />
+    <EntitySet Name="UsersStates" EntityType="HesiraModel.UsersState" />
+    <AssociationSet Name="Country1" Association="HesiraModel.Country1">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="ProfileAddress" Association="HesiraModel.ProfileAddress">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="UsersProfile" EntitySet="UsersProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="ProfileCitizenship" Association="HesiraModel.ProfileCitizenship">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="UsersProfile" EntitySet="UsersProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="DiseasesList" Association="HesiraModel.DiseasesList">
+      <End Role="Disease" EntitySet="Diseases" />
+      <End Role="DrugsDiseas" EntitySet="DrugsDiseases" />
+    </AssociationSet>
+    <AssociationSet Name="DrugDiseasesList" Association="HesiraModel.DrugDiseasesList">
+      <End Role="Drug" EntitySet="Drugs" />
+      <End Role="DrugsDiseas" EntitySet="DrugsDiseases" />
+    </AssociationSet>
+    <AssociationSet Name="ProfilesList" Association="HesiraModel.ProfilesList">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UsersProfile" EntitySet="UsersProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="ProfileState" Association="HesiraModel.ProfileState">
+      <End Role="UsersState" EntitySet="UsersStates" />
+      <End Role="UsersProfile" EntitySet="UsersProfiles" />
+    </AssociationSet>
+    <EntitySet Name="Appointments" EntityType="HesiraModel.Appointment" />
+    <AssociationSet Name="AppointmentFileList" Association="HesiraModel.AppointmentFileList">
+      <End Role="Appointment" EntitySet="Appointments" />
+      <End Role="File" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="AppointmentsForDoctor" Association="HesiraModel.AppointmentsForDoctor">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="AppointmentsForPatient" Association="HesiraModel.AppointmentsForPatient">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <EntitySet Name="Prescriptions" EntityType="HesiraModel.Prescription" />
+    <AssociationSet Name="AppointmentPrescription" Association="HesiraModel.AppointmentPrescription">
+      <End Role="Prescription" EntitySet="Prescriptions" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="PrescriptionsListForDoctor" Association="HesiraModel.PrescriptionsListForDoctor">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="PrescriptionsListForPatient" Association="HesiraModel.PrescriptionsListForPatient">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <EntitySet Name="PrescriptionsDrugs" EntityType="HesiraModel.PrescriptionsDrug" />
+    <AssociationSet Name="DrugPrescriptionDiseasesList" Association="HesiraModel.DrugPrescriptionDiseasesList">
+      <End Role="Disease" EntitySet="Diseases" />
+      <End Role="PrescriptionsDrug" EntitySet="PrescriptionsDrugs" />
+    </AssociationSet>
+    <AssociationSet Name="PrescriptionDrugList" Association="HesiraModel.PrescriptionDrugList">
+      <End Role="Drug" EntitySet="Drugs" />
+      <End Role="PrescriptionsDrug" EntitySet="PrescriptionsDrugs" />
+    </AssociationSet>
+    <AssociationSet Name="PrescriptionsDrugsPrescription" Association="HesiraModel.PrescriptionsDrugsPrescription">
+      <End Role="Prescription" EntitySet="Prescriptions" />
+      <End Role="PrescriptionsDrug" EntitySet="PrescriptionsDrugs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id_Address" />
+    </Key>
+    <Property Name="Id_Address" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Country" Type="Int32" Nullable="false" />
+    <Property Name="PhysicalAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Country" Relationship="HesiraModel.Country1" FromRole="Address" ToRole="Country" />
+    <NavigationProperty Name="UsersProfiles" Relationship="HesiraModel.ProfileAddress" FromRole="Address" ToRole="UsersProfile" />
+  </EntityType>
+  <EntityType Name="ConsultationRoom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="CUI" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CAS" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Approved" Type="Boolean" Nullable="false" />
+    <Property Name="Decision" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Current" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumericalCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="CountryNameLowerCase" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryNameUpperCase" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ISO_ALPHA3" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="ISO_ALPHA2" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Addresses" Relationship="HesiraModel.Country1" FromRole="Country" ToRole="Address" />
+    <NavigationProperty Name="UsersProfiles" Relationship="HesiraModel.ProfileCitizenship" FromRole="Country" ToRole="UsersProfile" />
+  </EntityType>
+  <EntityType Name="Disease">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DrugsDiseases" Relationship="HesiraModel.DiseasesList" FromRole="Disease" ToRole="DrugsDiseas" />
+    <NavigationProperty Name="PrescriptionsDrugs" Relationship="HesiraModel.DrugPrescriptionDiseasesList" FromRole="Disease" ToRole="PrescriptionsDrug" />
+  </EntityType>
+  <EntityType Name="Drug">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GeneralName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ComercialName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Vendor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OriginCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PresentationForm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReductionClass" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DrugsDiseases" Relationship="HesiraModel.DrugDiseasesList" FromRole="Drug" ToRole="DrugsDiseas" />
+    <NavigationProperty Name="PrescriptionsDrugs" Relationship="HesiraModel.PrescriptionDrugList" FromRole="Drug" ToRole="PrescriptionsDrug" />
+  </EntityType>
+  <EntityType Name="DrugsDiseas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Disease" Type="Int32" Nullable="false" />
+    <Property Name="Id_Drug" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Disease" Relationship="HesiraModel.DiseasesList" FromRole="DrugsDiseas" ToRole="Disease" />
+    <NavigationProperty Name="Drug" Relationship="HesiraModel.DrugDiseasesList" FromRole="DrugsDiseas" ToRole="Drug" />
+  </EntityType>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Order" Type="Int32" Nullable="false" />
+    <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Appointment" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Appointment" Relationship="HesiraModel.AppointmentFileList" FromRole="File" ToRole="Appointment" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Firstname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDoctor" Type="Boolean" Nullable="false" />
+    <Property Name="Enabled" Type="Boolean" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SidebarMode" Type="Boolean" Nullable="false" />
+    <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CNP" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="IsPatient" Type="Boolean" Nullable="false" />
+    <Property Name="LastAuthDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UsersProfiles" Relationship="HesiraModel.ProfilesList" FromRole="User" ToRole="UsersProfile" />
+    <NavigationProperty Name="AppointmentsListForDoctor" Relationship="HesiraModel.AppointmentsForDoctor" FromRole="User" ToRole="Appointment" />
+    <NavigationProperty Name="AppointmentsListForPatient" Relationship="HesiraModel.AppointmentsForPatient" FromRole="User" ToRole="Appointment" />
+    <NavigationProperty Name="PrescriptionsListForDoctor" Relationship="HesiraModel.PrescriptionsListForDoctor" FromRole="User" ToRole="Prescription" />
+    <NavigationProperty Name="PrescriptionsListForPatient" Relationship="HesiraModel.PrescriptionsListForPatient" FromRole="User" ToRole="Prescription" />
+  </EntityType>
+  <EntityType Name="UsersProfile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_User" Type="Int64" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_Address" Type="Int64" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastVisitDate" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Citizenship" Type="Int32" Nullable="false" />
+    <Property Name="Id_State" Type="Int32" />
+    <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Address" Relationship="HesiraModel.ProfileAddress" FromRole="UsersProfile" ToRole="Address" />
+    <NavigationProperty Name="Country" Relationship="HesiraModel.ProfileCitizenship" FromRole="UsersProfile" ToRole="Country" />
+    <NavigationProperty Name="User" Relationship="HesiraModel.ProfilesList" FromRole="UsersProfile" ToRole="User" />
+    <NavigationProperty Name="UsersState" Relationship="HesiraModel.ProfileState" FromRole="UsersProfile" ToRole="UsersState" />
+  </EntityType>
+  <EntityType Name="UsersState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UsersProfiles" Relationship="HesiraModel.ProfileState" FromRole="UsersState" ToRole="UsersProfile" />
+  </EntityType>
+  <Association Name="Country1">
+    <End Type="HesiraModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="HesiraModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="Id_Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfileAddress">
+    <End Type="HesiraModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="HesiraModel.UsersProfile" Role="UsersProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id_Address" />
+      </Principal>
+      <Dependent Role="UsersProfile">
+        <PropertyRef Name="Id_Address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfileCitizenship">
+    <End Type="HesiraModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="HesiraModel.UsersProfile" Role="UsersProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersProfile">
+        <PropertyRef Name="Id_Citizenship" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiseasesList">
+    <End Type="HesiraModel.Disease" Role="Disease" Multiplicity="1" />
+    <End Type="HesiraModel.DrugsDiseas" Role="DrugsDiseas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Disease">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DrugsDiseas">
+        <PropertyRef Name="Id_Disease" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DrugDiseasesList">
+    <End Type="HesiraModel.Drug" Role="Drug" Multiplicity="1" />
+    <End Type="HesiraModel.DrugsDiseas" Role="DrugsDiseas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drug">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DrugsDiseas">
+        <PropertyRef Name="Id_Drug" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfilesList">
+    <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+    <End Type="HesiraModel.UsersProfile" Role="UsersProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersProfile">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfileState">
+    <End Type="HesiraModel.UsersState" Role="UsersState" Multiplicity="0..1" />
+    <End Type="HesiraModel.UsersProfile" Role="UsersProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersProfile">
+        <PropertyRef Name="Id_State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Trace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Prescription" Type="Int64" />
+    <Property Name="Id_Patient" Type="Int64" Nullable="false" />
+    <Property Name="Id_Doctor" Type="Int64" Nullable="false" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Files" Relationship="HesiraModel.AppointmentFileList" FromRole="Appointment" ToRole="File" />
+    <NavigationProperty Name="AppointmentDoctor" Relationship="HesiraModel.AppointmentsForDoctor" FromRole="Appointment" ToRole="User" />
+    <NavigationProperty Name="AppointmentPatient" Relationship="HesiraModel.AppointmentsForPatient" FromRole="Appointment" ToRole="User" />
+    <NavigationProperty Name="Prescription" Relationship="HesiraModel.AppointmentPrescription" FromRole="Appointment" ToRole="Prescription" />
+  </EntityType>
+  <Association Name="AppointmentFileList">
+    <End Type="HesiraModel.Appointment" Role="Appointment" Multiplicity="1" />
+    <End Type="HesiraModel.File" Role="File" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="File">
+        <PropertyRef Name="Id_Appointment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AppointmentsForDoctor">
+    <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+    <End Type="HesiraModel.Appointment" Role="Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Id_Doctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AppointmentsForPatient">
+    <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+    <End Type="HesiraModel.Appointment" Role="Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Id_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Prescription">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Series" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="Int64" Nullable="false" />
+    <Property Name="Id_Patient" Type="Int64" Nullable="false" />
+    <Property Name="PrescriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_Doctor" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Appointments" Relationship="HesiraModel.AppointmentPrescription" FromRole="Prescription" ToRole="Appointment" />
+    <NavigationProperty Name="PrescriptionsDoctor" Relationship="HesiraModel.PrescriptionsListForDoctor" FromRole="Prescription" ToRole="User" />
+    <NavigationProperty Name="PrescriptionsPatient" Relationship="HesiraModel.PrescriptionsListForPatient" FromRole="Prescription" ToRole="User" />
+    <NavigationProperty Name="PrescriptionsDrugs" Relationship="HesiraModel.PrescriptionsDrugsPrescription" FromRole="Prescription" ToRole="PrescriptionsDrug" />
+  </EntityType>
+  <Association Name="AppointmentPrescription">
+    <End Type="HesiraModel.Prescription" Role="Prescription" Multiplicity="0..1" />
+    <End Type="HesiraModel.Appointment" Role="Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescription">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Id_Prescription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrescriptionsListForDoctor">
+    <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+    <End Type="HesiraModel.Prescription" Role="Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="Id_Doctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrescriptionsListForPatient">
+    <End Type="HesiraModel.User" Role="User" Multiplicity="1" />
+    <End Type="HesiraModel.Prescription" Role="Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="Id_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PrescriptionsDrug">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id_Prescription" Type="Int64" Nullable="false" />
+    <Property Name="Id_Drug" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Days" Type="Int32" Nullable="false" />
+    <Property Name="Id_Disease" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Disease" Relationship="HesiraModel.DrugPrescriptionDiseasesList" FromRole="PrescriptionsDrug" ToRole="Disease" />
+    <NavigationProperty Name="Drug" Relationship="HesiraModel.PrescriptionDrugList" FromRole="PrescriptionsDrug" ToRole="Drug" />
+    <NavigationProperty Name="Prescription" Relationship="HesiraModel.PrescriptionsDrugsPrescription" FromRole="PrescriptionsDrug" ToRole="Prescription" />
+  </EntityType>
+  <Association Name="DrugPrescriptionDiseasesList">
+    <End Type="HesiraModel.Disease" Role="Disease" Multiplicity="1" />
+    <End Type="HesiraModel.PrescriptionsDrug" Role="PrescriptionsDrug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Disease">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrescriptionsDrug">
+        <PropertyRef Name="Id_Disease" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrescriptionDrugList">
+    <End Type="HesiraModel.Drug" Role="Drug" Multiplicity="1" />
+    <End Type="HesiraModel.PrescriptionsDrug" Role="PrescriptionsDrug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drug">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrescriptionsDrug">
+        <PropertyRef Name="Id_Drug" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrescriptionsDrugsPrescription">
+    <End Type="HesiraModel.Prescription" Role="Prescription" Multiplicity="1" />
+    <End Type="HesiraModel.PrescriptionsDrug" Role="PrescriptionsDrug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescription">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrescriptionsDrug">
+        <PropertyRef Name="Id_Prescription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

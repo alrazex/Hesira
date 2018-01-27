@@ -1,0 +1,71 @@
+﻿.btn-menu {
+    font-size: 14px !important;
+}
+
+.btn_advanced_search {
+    border-top-width: 2px;
+}
+
+.bs-quick_search {
+    padding-bottom: 9px !important;
+}
+
+.skin-blue .navbar .nav a.no-color {
+    color: white !important;
+}
+
+.bs-moveToGroupBtn {
+    margin-top: 10px !important;
+}
+
+.group_editor .search .input-group {
+    margin-top: 10px !important;
+    margin-left: 5px !important;
+}
+
+.bs-pager {
+    bottom: -10px !important;
+}
+
+/* Add fade animation to dropdown menus */
+.open > .dropdown-menu-user {
+    animation-name: fadeAnimation;
+    animation-duration: .7s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: fadeAnimation;
+    -webkit-animation-duration: .7s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: fadeAnimation;
+    -moz-animation-duration: .7s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: forwards;
+}
+
+@keyframes fadeAnimation {
+    from {
+        opacity: 0;
+        top: 120%;
+    }
+
+    to {
+        opacity: 1;
+        top: 100%;
+    }
+}
+
+@-webkit-keyframes fadeAnimation {
+    from {
+        opacity: 0;
+        top: 120%;
+    }
+
+    to {
+        opacity: 1;
+        top: 100%;
+    }
+}

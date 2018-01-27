@@ -1,0 +1,10 @@
+D:\Workspace\TFS\Hesira\Entities\bin\Debug\Entities.dll.config
+D:\Workspace\TFS\Hesira\Entities\bin\Debug\Entities.dll
+D:\Workspace\TFS\Hesira\Entities\bin\Debug\Entities.pdb
+D:\Workspace\TFS\Hesira\Entities\bin\Debug\EntityFramework.dll
+D:\Workspace\TFS\Hesira\Entities\bin\Debug\EntityFramework.SqlServer.dll
+D:\Workspace\TFS\Hesira\Entities\bin\Debug\EntityFramework.xml
+D:\Workspace\TFS\Hesira\Entities\bin\Debug\EntityFramework.SqlServer.xml
+D:\Workspace\TFS\Hesira\Entities\obj\Debug\Hesira.Entities.csprojResolveAssemblyReference.cache
+D:\Workspace\TFS\Hesira\Entities\obj\Debug\Entities.dll
+D:\Workspace\TFS\Hesira\Entities\obj\Debug\Entities.pdb
